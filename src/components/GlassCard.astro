@@ -7,12 +7,6 @@ interface Props {
 const { class: className = '', hoverEffect = false } = Astro.props;
 ---
 
-<div class={`relative rounded-2xl bg-black/20 border border-white/10 backdrop-blur-md overflow-hidden transition-all duration-500 ease-out ${hoverEffect ? 'hover-3d-card' : ''} ${className}`}>
+<div class={`relative rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md overflow-hidden transition-all duration-300 ${hoverEffect ? 'hover:-translate-y-1 hover:border-tf-coral/30 hover:shadow-[0_8px_30px_var(--color-tf-coral-35)]' : ''} ${className}`}>
   <slot />
 </div>
-
-<style>
-  .hover-3d-card:hover {
-    box-shadow: 0 0 30px var(--color-tf-coral-35);
-  }
-</style>

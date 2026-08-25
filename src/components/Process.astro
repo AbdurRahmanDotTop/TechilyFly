@@ -36,45 +36,61 @@ const steps = [
 ];
 ---
 
-<section id="process" class="py-24 relative overflow-hidden border-t border-white/10">
-  <!-- 3D Flowing Data Stream -->
-  <div id="process-stream" class="absolute inset-0 z-0 opacity-40 pointer-events-none"></div>
-
-  <div class="container mx-auto px-6 max-w-7xl relative z-10">
-    <div class="text-center max-w-3xl mx-auto mb-20">
-      <GradientHeading as="h2" class="text-[clamp(2rem,4vw+1rem,3.5rem)] font-extrabold mb-6">
+<section id="process" class="py-16 md:py-24 lg:py-32 relative bg-transparent overflow-hidden">
+  <div id="processCanvas" class="canvas-container"></div>
+  
+  <div class="container mx-auto px-4 sm:px-6 max-w-7xl relative z-10">
+    <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16 lg:mb-20">
+      <GradientHeading as="h2" class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 md:mb-6">
         How We Work
       </GradientHeading>
-      <p class="text-[clamp(1.125rem,2vw,1.25rem)] text-tf-graphite-40 max-w-2xl mx-auto">
+      <p class="text-lg sm:text-xl text-tf-graphite-20 px-2">
         Our proven methodology for turning complex problems into elegant solutions.
       </p>
     </div>
 
-    <div class="relative max-w-7xl mx-auto mt-12">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 relative z-10">
+    <!-- Timeline Layout -->
+    <div class="relative w-full max-w-[90rem] mx-auto px-2 sm:px-6">
+      
+      <!-- Connecting Line (Desktop) - Horizontal Dotted -->
+      <div class="hidden lg:block absolute top-[24px] xl:top-[28px] left-[10%] right-[10%] h-[2px] border-t-2 border-dotted border-tf-coral/40 z-0 pointer-events-none"></div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-4 xl:gap-6 relative z-10">
         {steps.map((step, i) => (
-          <GlassCard hoverEffect={true} class="flex flex-col p-6 text-center relative overflow-hidden group">
-            <span class="text-7xl font-black text-white/5 absolute -top-4 -right-4 pointer-events-none select-none transition-transform group-hover:scale-110 z-0">
-              {step.num}
-            </span>
+          <div class="flex flex-col items-center group relative h-full">
             
-            <div class="relative z-10 flex flex-col flex-1">
-              <h3 class="text-xl font-semibold mb-3 text-white group-hover:text-tf-coral transition-colors">{step.title}</h3>
-              <p class="text-[clamp(0.875rem,1.5vw,1rem)] text-tf-cloud/80 mb-4">{step.description}</p>
-              <div class="mt-auto">
-                <p class="text-xs text-tf-coral-light/90 leading-relaxed">{step.detail}</p>
-              </div>
+            <!-- Connecting Line (Mobile/Tablet) - Vertical Dotted -->
+            {i !== steps.length - 1 && (
+              <div class="lg:hidden absolute top-[48px] bottom-[-32px] left-1/2 w-[2px] -translate-x-1/2 border-l-2 border-dotted border-tf-coral/30 z-0 pointer-events-none"></div>
+            )}
+
+            <!-- Number Circle -->
+            <div class="w-12 h-12 xl:w-14 xl:h-14 rounded-full bg-tf-graphite border-2 border-tf-coral flex items-center justify-center text-white text-base xl:text-lg font-bold font-mono group-hover:scale-110 group-hover:bg-tf-coral transition-all duration-300 shadow-[0_0_15px_var(--color-tf-coral-35)] z-10 relative shrink-0">
+              {step.num}
             </div>
-          </GlassCard>
+
+            <!-- Dotted Line Connecting Number to Card -->
+            <div class="w-[2px] h-4 xl:h-6 border-l-2 border-dotted border-tf-coral/60 my-1 xl:my-2 z-10 pointer-events-none"></div>
+
+            <!-- GlassCard Box -->
+            <GlassCard hoverEffect={true} class="p-5 xl:p-6 relative overflow-hidden flex flex-col items-center text-center w-full flex-grow hover:-translate-y-2 transition-transform duration-300 group/card">
+              <div class="absolute -top-4 -right-4 p-4 opacity-5 group-hover/card:opacity-10 transition-opacity duration-300 pointer-events-none">
+                <span class="text-8xl xl:text-9xl font-black italic">{step.num}</span>
+              </div>
+              
+              <h4 class="text-lg xl:text-xl font-bold text-white mb-2 xl:mb-3 group-hover/card:text-tf-coral-light transition-colors duration-300 relative z-10">{step.title}</h4>
+              <p class="text-xs xl:text-sm text-tf-graphite-20 mb-4 xl:mb-6 flex-grow relative z-10 leading-relaxed">{step.description}</p>
+              
+              <div class="mt-auto relative z-10 w-full">
+                <span class="text-[10px] xl:text-xs font-mono text-tf-coral-light bg-tf-coral/10 py-1.5 xl:py-2 px-2 xl:px-3 rounded-xl border border-tf-coral/20 inline-block w-full">
+                  {step.detail}
+                </span>
+              </div>
+            </GlassCard>
+            
+          </div>
         ))}
       </div>
     </div>
   </div>
 </section>
-
-<script>
-  import { initProcessStream } from '../scenes/process-stream';
-  document.addEventListener('DOMContentLoaded', () => {
-    initProcessStream('process-stream');
-  });
-</script>

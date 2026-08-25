@@ -1,28 +1,20 @@
 ---
 import Button from './Button.astro';
-import GradientHeading from './GradientHeading.astro';
 ---
 
-<section class="py-32 relative overflow-hidden border-t border-white/10">
+<section class="py-32 relative overflow-hidden">
   <div class="container mx-auto px-6 max-w-4xl relative z-10 text-center">
-    <h2 class="text-[clamp(2rem,4vw+1rem,3.5rem)] font-bold mb-6 text-white">
-      Your Concerns, 
-      <span class="text-transparent bg-clip-text bg-[image:var(--gradient-heading)]">Our Solutions</span>
+    <h2 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-8 leading-tight">
+      <span class="text-transparent bg-clip-text bg-[image:var(--gradient-signal)]">Your Concerns,</span><br/>
+      <span class="text-white">Our Solutions</span>
     </h2>
     
-    <p class="text-[clamp(1.125rem,2vw,1.25rem)] text-tf-cloud/70">Let's Connect For 30 Minutes Chat</p>
-    
-    <p class="text-sm text-tf-graphite-40 mt-4 max-w-2xl mx-auto leading-relaxed">
-      We will understand your challenges and share how our tech expertise can save you time, reduce costs, and speed up your growth.
+    <p class="text-xl text-tf-graphite-20 mb-12 max-w-2xl mx-auto">
+      Ready to transform your business with a virtual tech team that acts like your own? Let's discuss your next project.
     </p>
     
-    <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
-      <Button href="/#contact" variant="primary">
-        Book A Free Consultation →
-      </Button>
-      <Button href="mailto:support@techilyfly.com" variant="secondary">
-        Contact Email
-      </Button>
-    </div>
+    <Button href="/#contact" variant="primary" class="text-lg px-10 py-5">
+      Start The Conversation
+    </Button>
   </div>
 </section>

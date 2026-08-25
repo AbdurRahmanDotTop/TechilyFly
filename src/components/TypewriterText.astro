@@ -6,11 +6,10 @@ interface Props {
 const { words } = Astro.props;
 ---
 
-<span class="inline-flex items-center">
-  <span id="typewriter" class="text-transparent bg-clip-text bg-[image:var(--gradient-heading)] text-left align-baseline">
+<span class="inline-flex">
+  <span id="typewriter" class="text-transparent bg-clip-text bg-[image:var(--gradient-heading)] min-w-[300px] md:min-w-[500px] text-left">
     <span class="typewriter-text"></span>
   </span>
-  <span class="inline-block w-[3px] h-[1em] bg-tf-coral animate-pulse ml-1 align-middle relative -top-1"></span>
 </span>
 
 <script define:vars={{ words }}>
@@ -35,7 +34,7 @@ const { words } = Astro.props;
         this.txt = fullTxt.substring(0, this.txt.length + 1);
       }
 
-      this.txtElement.textContent = this.txt;
+      this.txtElement.innerHTML = `${this.txt}<span class="inline-block w-[3px] h-[1em] bg-tf-coral animate-pulse ml-1 align-middle"></span>`;
 
       let typeSpeed = 100;
 

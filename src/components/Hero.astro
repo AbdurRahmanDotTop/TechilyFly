@@ -1,7 +1,6 @@
 ---
 import Button from './Button.astro';
 import TypewriterText from './TypewriterText.astro';
-import GlassCard from './GlassCard.astro';
 
 const words = [
   "Virtual Tech Team",
@@ -18,43 +17,41 @@ const stats = [
 ];
 ---
 
-<section id="hero" class="relative min-h-screen flex items-center justify-center pt-20">
+<section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 md:pt-32 pb-16 overflow-hidden">
+  <div id="heroCanvas" class="canvas-container"></div>
   
-  <!-- Floating 3D Particles -->
-  <div id="hero-particles" class="absolute inset-0 z-0 pointer-events-none"></div>
-
-  <div class="container mx-auto px-6 max-w-7xl relative z-10">
-    <div class="text-center max-w-4xl mx-auto space-y-8">
+  <div class="container mx-auto px-4 sm:px-6 max-w-7xl relative z-10">
+    <div class="text-center max-w-4xl mx-auto space-y-6 md:space-y-8">
       
-      <h1 class="text-[clamp(2.5rem,5vw+1rem,4rem)] font-bold mb-6 text-transparent bg-clip-text bg-[image:var(--gradient-heading)] leading-[1.2] pb-1 h-[150px]">
-        <span class="text-white">We are your&nbsp;</span>
+      <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
+        <span class="block text-white mb-2">We are your</span>
         <TypewriterText words={words} />
       </h1>
       
-      <p class="text-lg mb-12 text-tf-cloud/70 max-w-2xl mx-auto">
-        We handle everything from strategy to execution, AI to analytics, <br class="hidden md:block">like your in-house Software team would.
+      <p class="text-lg sm:text-xl md:text-2xl text-tf-graphite-20 max-w-2xl mx-auto leading-relaxed px-2">
+        We handle everything from strategy to execution, AI to analytics, like your in-house Software team would.
       </p>
       
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <Button href="/#contact" variant="primary">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6 md:pt-8 w-full px-4 sm:px-0">
+        <Button href="/#contact" variant="primary" class="w-full sm:w-auto text-lg px-8 py-4">
           Start Now →
         </Button>
-        <Button href="/case-studies" variant="secondary">
+        <Button href="/case-studies" variant="secondary" class="w-full sm:w-auto text-lg px-8 py-4">
           Case Studies
         </Button>
       </div>
 
       <!-- Stats Row -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-        {stats.map((stat, i) => (
-          <GlassCard hoverEffect={true} class="p-6 text-left" style={`animation-delay: ${i * 0.5}s`}>
-            <div class="text-3xl font-bold text-tf-coral mb-2">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 pt-12 md:pt-16 border-t border-white/10 mt-12 md:mt-16">
+        {stats.map(stat => (
+          <div class="flex flex-col items-center gap-2">
+            <span class="text-4xl md:text-5xl font-mono font-bold text-transparent bg-clip-text bg-[image:var(--gradient-signal)]">
               {stat.value}
-            </div>
-            <div class="text-tf-cloud/70">
+            </span>
+            <span class="text-tf-graphite-40 font-medium uppercase tracking-wider text-xs md:text-sm">
               {stat.label}
-            </div>
-          </GlassCard>
+            </span>
+          </div>
         ))}
       </div>
       
@@ -62,9 +59,4 @@ const stats = [
   </div>
 </section>
 
-<script>
-  import { initHeroParticles } from '../scenes/hero-particles';
-  document.addEventListener('DOMContentLoaded', () => {
-    initHeroParticles('hero-particles');
-  });
-</script>
+

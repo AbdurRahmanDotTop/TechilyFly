@@ -24,8 +24,9 @@ try:
 except ImportError:
     sys.exit("pypdf not installed — run: python3 -m pip install pypdf")
 
+from typing import Optional
 
-def set_title(path: Path, title: str, author: str | None) -> None:
+def set_title(path: Path, title: str, author: Optional[str]) -> None:
     reader = PdfReader(str(path))
     old = (reader.metadata or {}).get("/Title")
     writer = PdfWriter(clone_from=str(path))

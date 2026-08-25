@@ -162,7 +162,8 @@ def _emblem(card):
     if not LOGO:
         return W - 2 * 64 - 40  # full text width when there's no emblem
     try:
-        em = Image.open(LOGO).convert("RGBA").resize((460, 460), Image.LANCZOS)
+        resample = getattr(Image, "Resampling", Image).LANCZOS
+        em = Image.open(LOGO).convert("RGBA").resize((460, 460), resample)
     except Exception:
         return W - 2 * 64 - 40
     em.putalpha(em.getchannel("A").point(lambda a: a * 20 // 100))  # ~20% watermark

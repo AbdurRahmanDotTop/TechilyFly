@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="images/favicon.png" rel="icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idea Rise - Your Own Virtual Tech Team</title>
+    <meta name="description" content="Building Software That Saves Time & Cost. Custom development, automation, AI/ML platforms.">
+
+    <meta property="og:title" content="Integrating Technology with Businesses" />
+  <meta property="og:image" content="https://idearise.co/images/og_idea_rise.png" />
+  <meta property="og:description" content="Automating Processes, Reducing cost at scale." />
+    
+    <!-- Three.js and dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="send_contact.js"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'glass-bg': 'rgba(255, 255, 255, 0.1)',
+                        'glass-border': 'rgba(255, 255, 255, 0.2)',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+                        'rotate-3d': 'rotate-3d 20s linear infinite',
+                        'scroll-left': 'scroll-left 30s linear infinite',
+                        'scroll-right': 'scroll-right 30s linear infinite',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="text-2xl font-bold text-3d bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
+                    <img src="images/logo.png" style="max-width:150px; opacity: 0.8;">
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#hero" class="text-gray-300 hover:text-blue-400 transition-colors duration-200">Home</a>
+                    <a href="#capabilities" class="text-gray-300 hover:text-blue-400 transition-colors duration-200">Services</a>
+                    <a href="#process" class="text-gray-300 hover:text-blue-400 transition-colors duration-200">Process</a>
+                    <a href="#testimonials" class="text-gray-300 hover:text-blue-400 transition-colors duration-200">Testimonials</a>
+                    <a href="#clients" class="text-gray-300 hover:text-blue-400 transition-colors duration-200">Clients</a>
+                    <a href="case-studies.html" class="text-gray-300 hover:text-blue-400 transition-colors duration-200">Case Studies</a>
+                    <a href="#cta" class="text-gray-300 hover:text-blue-400 transition-colors duration-200">Contact</a>
+                </div>
+
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobileMenuBtn" class="text-white hover:text-blue-400 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="md:hidden hidden mt-4 pb-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="#hero" class="text-gray-300 hover:text-blue-400 transition-colors duration-200">Home</a>
+                    <a href="#capabilities" class="text-gray-300 hover:text-blue-400 transition-colors duration-200">Services</a>
+                    <a href="#process" class="text-gray-300 hover:text-blue-400 transition-colors duration-200">Process</a>
+                    <a href="#testimonials" class="text-gray-300 hover:text-blue-400 transition-colors duration-200">Testimonials</a>
+                    <a href="#clients" class="text-gray-300 hover:text-blue-400 transition-colors duration-200">Clients</a>
+                    <a href="case-studies.html" class="text-gray-300 hover:text-blue-400 transition-colors duration-200">Case Studies</a>
+                    <a href="#cta" class="text-gray-300 hover:text-blue-400 transition-colors duration-200">Contact</a>
+
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Matrix Rain Background -->
+    <canvas class="matrix-rain" id="matrixCanvas"></canvas>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <!-- 3D Background Canvas -->
+        <div class="canvas-container" id="heroCanvas"></div>
+        <div class="canvas-container" id="processCanvas"></div>
+
+        
+        <!-- Floating 3D Particles -->
+        <div class="canvas-container" id="particleCanvas"></div>
+        
+        <!-- Content -->
+        <div class="content-overlay text-center px-4 max-w-6xl mx-auto w-full">
+            <div class=" rounded-3xl p-8 md:p-12 mb-8 w-full mx-auto">
+                <h3 class="text-4xl md:text-5xl font-bold mb-6 text-3d bg-gradient-to-r from-white via-blue-200 to-blue-400 bg-clip-text text-transparent leading-[1.2] pb-1" style="height:150px;">
+                    We are your <span id="typewriter" class="border-r-2 border-blue-400 align-baseline"></span>
+                </h3>
+                
+                <p class="text-lg mb-12 text-gray-400 max-w-2xl mx-auto">
+                    We handle everything from strategy to execution, AI to analytics, <br>like your in-house Software team would.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="https://calendly.com/shahbazh/30-minutes-consultation" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover-3d">
+                        Start Now →
+                    </a>
+                    <a href="case-studies.html" class="border border-white/20 text-white hover:bg-white/10 px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover-3d">
+                        Case Studies
+                    </a>
+                </div>
+            </div>
+
+            <!-- Floating 3D Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+                <div class="glass-dark rounded-2xl p-6 hover-3d" style="animation-delay: 0s;">
+                    <div class="text-3xl font-bold text-blue-400 mb-2">300+</div>
+                    <div class="text-gray-300">Projects Delivered</div>
+                </div>
+                <div class="glass-dark rounded-2xl p-6 hover-3d" style="animation-delay: 0.5s;">
+                    <div class="text-3xl font-bold text-blue-400 mb-2">40+</div>
+                    <div class="text-gray-300">Countries Served</div>
+                </div>
+                <div class="glass-dark rounded-2xl p-6 hover-3d" style="animation-delay: 1s;">
+                    <div class="text-3xl font-bold text-blue-400 mb-2">30%</div>
+                    <div class="text-gray-300">Average Cost Saving</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Capabilities Section -->
+    <section id="capabilities" class="py-20 px-4 relative">
+        <!-- 3D Background -->
+        <div class="canvas-container" id="capabilitiesCanvas"></div>
+        
+        <div class="content-overlay max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-3d bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
+                    What We Do
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Full Stack Technology solutions to reduce your fixed costs
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Custom Software Development -->
+                <div class="glass-dark border-white/10 hover:border-blue-400/50 transition-all duration-300 group rounded-2xl p-8 hover-3d">
+                    <div class="mb-6">
+                        <div class="w-16 h-16 bg-black border rounded-2xl flex items-center justify-center mb-4 shadow-[inset_0_1px_3px_rgba(255,255,255,0.15),0_4px_10px_rgba(0,0,0,0.6)]" style="border-color: rgb(34, 40, 50);">
+                            <svg class="h-8 w-8 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                      d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-white group-hover:text-blue-400 transition-colors">
+                            Custom Software Development
+                        </h3>
+                        <p class="text-gray-400 mb-4">
+                            Scalable web and mobile applications built with modern technologies
+                        </p>
+                        <p class="text-sm text-blue-300">
+                            Full-stack development using React, Python, Django and cloud-native architectures
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Workflow Automation -->
+                <div class="glass-dark border-white/10 hover:border-blue-400/50 transition-all duration-300 cursor-pointer group rounded-2xl p-8 hover-3d">
+                    <div class="mb-6">
+                        <div class="w-16 h-16 bg-black border rounded-2xl flex items-center justify-center mb-4 shadow-[inset_0_1px_3px_rgba(255,255,255,0.15),0_4px_10px_rgba(0,0,0,0.6)]" style="border-color: rgb(34, 40, 50);">
+                            <svg class="h-8 w-8 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-white group-hover:text-blue-400 transition-colors">
+                            Workflow Automation
+                        </h3>
+                        <p class="text-gray-400 mb-4">
+                            Streamline operations with intelligent automation solutions
+                        </p>
+                        <p class="text-sm text-blue-300">
+                            API integrations, and custom workflow engines to eliminate manual tasks
+                        </p>
+                    </div>
+                </div>
+
+                <!-- AI/ML & Data Platforms -->
+                <div class="glass-dark border-white/10 hover:border-blue-400/50 transition-all duration-300 cursor-pointer group rounded-2xl p-8 hover-3d">
+                    <div class="mb-6">
+                        <div class="w-16 h-16 bg-black border rounded-2xl flex items-center justify-center mb-4 shadow-[inset_0_1px_3px_rgba(255,255,255,0.15),0_4px_10px_rgba(0,0,0,0.6)]" style="border-color: rgb(34, 40, 50);">
+                            <svg class="h-8 w-8 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-white group-hover:text-blue-400 transition-colors">
+                            AI/ML & Data Platforms
+                        </h3>
+                        <p class="text-gray-400 mb-4">
+                            Harness the power of artificial intelligence and machine learning
+                        </p>
+                        <p class="text-sm text-blue-300">
+                            Predictive analytics, NLP, computer vision, and data pipeline development
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Integrations & APIs -->
+                <div class="glass-dark border-white/10 hover:border-blue-400/50 transition-all duration-300 cursor-pointer group rounded-2xl p-8 hover-3d">
+                    <div class="mb-6">
+                        <div class="w-16 h-16 bg-black border rounded-2xl flex items-center justify-center mb-4 shadow-[inset_0_1px_3px_rgba(255,255,255,0.15),0_4px_10px_rgba(0,0,0,0.6)]" style="border-color: rgb(34, 40, 50);">
+                            <svg class="h-8 w-8 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-white group-hover:text-blue-400 transition-colors">
+                            Integrations & APIs
+                        </h3>
+                        <p class="text-gray-400 mb-4">
+                            Connect your systems with seamless integrations
+                        </p>
+                        <p class="text-sm text-blue-300">
+                            REST APIs, GraphQL, and third-party system integrations
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Dashboards & Analytics -->
+                <div class="glass-dark border-white/10 hover:border-blue-400/50 transition-all duration-300 cursor-pointer group rounded-2xl p-8 hover-3d">
+                    <div class="mb-6">
+                        <div class="w-16 h-16 bg-black border rounded-2xl flex items-center justify-center mb-4 shadow-[inset_0_1px_3px_rgba(255,255,255,0.15),0_4px_10px_rgba(0,0,0,0.6)]" style="border-color: rgb(34, 40, 50);">
+                            <svg class="h-8 w-8 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-white group-hover:text-blue-400 transition-colors">
+                            Dashboards & Analytics
+                        </h3>
+                        <p class="text-gray-400 mb-4">
+                            Real-time insights with interactive data visualizations
+                        </p>
+                        <p class="text-sm text-blue-300">
+                            Business intelligence, KPI tracking, and custom reporting solutions
+                        </p>
+                    </div>
+                </div>
+
+                <!-- DevOps & Infrastructure -->
+                <div class="glass-dark border-white/10 hover:border-blue-400/50 transition-all duration-300 cursor-pointer group rounded-2xl p-8 hover-3d">
+                    <div class="mb-6">
+                        <div class="w-16 h-16 bg-black border rounded-2xl flex items-center justify-center mb-4 shadow-[inset_0_1px_3px_rgba(255,255,255,0.15),0_4px_10px_rgba(0,0,0,0.6)]" style="border-color: rgb(34, 40, 50);">
+                            <svg class="h-8 w-8 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-white group-hover:text-blue-400 transition-colors">
+                            DevOps & Infrastructure
+                        </h3>
+                        <p class="text-gray-400 mb-4">
+                            Scalable cloud infrastructure and deployment automation
+                        </p>
+                        <p class="text-sm text-blue-300">
+                            AWS, Azure, GCP, Digital Oceans, and CI/CD pipeline setup
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-20 px-4 relative">
+        <!-- 3D Timeline Canvas -->
+        
+        
+        <div class="content-overlay max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-3d bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
+                    How We Work
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Our proven process ensures successful outcome
+                </p>
+            </div>
+
+            <!-- 3D Process Timeline -->
+            <div class="relative">
+                <div class="hidden lg:block">
+                    <div class="relative">
+                        <!-- Timeline line -->
+                        <div class="absolute top-1/2 left-0 right-0 h-1 holographic rounded-full"></div>
+                        
+                        <!-- Process steps -->
+                        <div class="flex justify-between items-center relative">
+                            <!-- Strategy -->
+                            <div class="flex flex-col items-center group">
+                                <div class="glass-dark border-white/10 w-64 rounded-2xl p-6 text-center hover-3d">
+                                    <h3 class="text-lg font-semibold mb-2 text-white">Understand</h3>
+                                    <p class="text-sm text-gray-400 mb-3">Define your business goals and technical requirements</p>
+                                    <p class="text-xs text-blue-300">Requirements analysis, technical feasibility, and project roadmap creation</p>
+                                </div>
+                            </div>
+
+                            <!-- Design -->
+                            <div class="flex flex-col items-center group">
+                                <div class="glass-dark border-white/10 w-64 rounded-2xl p-6 text-center hover-3d">
+                                    <h3 class="text-lg font-semibold mb-2 text-white">Design</h3>
+                                    <p class="text-sm text-gray-400 mb-3">Creating intuitive user experiences and system architecture</p>
+                                    <p class="text-xs text-blue-300">UI/UX design, system architecture, and database design</p>
+                                </div>
+                            </div>
+
+                            <!-- Build -->
+                            <div class="flex flex-col items-center group">
+                                <div class="glass-dark border-white/10 w-64 rounded-2xl p-6 text-center hover-3d">
+                                    <h3 class="text-lg font-semibold mb-2 text-white">Build</h3>
+                                    <p class="text-sm text-gray-400 mb-3">Agile development with continuous integration and testing</p>
+                                    <p class="text-xs text-blue-300">Sprint-based development, code reviews, and automated testing</p>
+                                </div>
+                            </div>
+
+
+                            <!-- Support -->
+                            <div class="flex flex-col items-center group">
+     
+                                <div class="glass-dark border-white/10 w-64 rounded-2xl p-6 text-center hover-3d">
+                                    <h3 class="text-lg font-semibold mb-2 text-white">Support</h3>
+                                    <p class="text-sm text-gray-400 mb-3">Ongoing maintenance, updates, and feature enhancements</p>
+                                    <p class="text-xs text-blue-300">24/7 monitoring, regular updates, and continuous improvement</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Process Cards -->
+                <div class="lg:hidden space-y-6">
+                    <div class="glass-dark border-white/10 rounded-2xl p-6 hover-3d">
+                        <div class="flex items-start space-x-4">
+                            <div>
+                                <h3 class="text-lg font-semibold mb-2 text-white">Strategy</h3>
+                                <p class="text-gray-400 mb-2">Understanding your business goals and technical requirements</p>
+                                <p class="text-sm text-blue-300">Requirements analysis, technical feasibility, and project roadmap creation</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-dark border-white/10 rounded-2xl p-6 hover-3d">
+                        <div class="flex items-start space-x-4">
+                            <div>
+                                <h3 class="text-lg font-semibold mb-2 text-white">Design</h3>
+                                <p class="text-gray-400 mb-2">Creating intuitive user experiences and system architecture</p>
+                                <p class="text-sm text-blue-300">UI/UX design, system architecture, and database design</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-dark border-white/10 rounded-2xl p-6 hover-3d">
+                        <div class="flex items-start space-x-4">
+                            <div>
+                                <h3 class="text-lg font-semibold mb-2 text-white">Build</h3>
+                                <p class="text-gray-400 mb-2">Agile development with continuous integration and testing</p>
+                                <p class="text-sm text-blue-300">Sprint-based development, code reviews, and automated testing</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-dark border-white/10 rounded-2xl p-6 hover-3d">
+                        <div class="flex items-start space-x-4">
+                            <div>
+                                <h3 class="text-lg font-semibold mb-2 text-white">Deploy</h3>
+                                <p class="text-gray-400 mb-2">Seamless deployment to production with monitoring setup</p>
+                                <p class="text-sm text-blue-300">Cloud deployment, performance optimization, and security hardening</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-dark border-white/10 rounded-2xl p-6 hover-3d">
+                        <div class="flex items-start space-x-4">
+                            <div>
+                                <h3 class="text-lg font-semibold mb-2 text-white">Support</h3>
+                                <p class="text-gray-400 mb-2">Ongoing maintenance, updates, and feature enhancements</p>
+                                <p class="text-sm text-blue-300">24/7 monitoring, regular updates, and continuous improvement</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 px-4 relative">
+        <!-- 3D Background -->
+        <div class="canvas-container" id="testimonialsCanvas"></div>
+        
+        <div class="content-overlay max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-3d bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
+                    What Our Clients Say
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Real stories from businesses that transformed with our technology solutions
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="glass-dark border-white/10 rounded-2xl p-8 testimonial-card hover-3d">
+                    <div class="mb-6">
+                        <div class="flex items-center mb-4">
+                        </div>
+                        <p class="text-gray-300 mb-6 italic">
+                            "They understood what I was attempting to accomplish better than I did. Many people just do what they are told, but they own the project and injects their talents and skills into it to produce something better than you actually asked for."
+                        </p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">DH</span>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-semibold">David Harrison</h4>
+                            <p class="text-gray-400 text-sm">BeWise LLC, USA</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="glass-dark border-white/10 rounded-2xl p-8 testimonial-card hover-3d">
+                    <div class="mb-6">
+                        <div class="flex items-center mb-4">
+                        </div>
+                        <p class="text-gray-300 mb-6 italic">
+                            "Delivered before deadline. Great communication, easy to work with, understood project clearly and executed with excellence. A+"
+                        </p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-500 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">AW</span>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-semibold">Andrew Werner</h4>
+                            <p class="text-gray-400 text-sm">1 Cut,USA</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="glass-dark border-white/10 rounded-2xl p-8 testimonial-card hover-3d">
+                    <div class="mb-6">
+                        <div class="flex items-center mb-4">
+                      
+                        </div>
+                        <p class="text-gray-300 mb-6 italic">
+                            "I have been working with them for a long time. They has transformed our contract processing department. It has made our system appear more professional and clean."
+                        </p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">JP</span>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-semibold">Jackie Pearson</h4>
+                            <p class="text-gray-400 text-sm">Keypoint Solutions LLC, USA</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 4 -->
+                <div class="glass-dark border-white/10 rounded-2xl p-8 testimonial-card hover-3d">
+                    <div class="mb-6">
+                        <div class="flex items-center mb-4">
+                        </div>
+                        <p class="text-gray-300 mb-6 italic">
+                            "They have helped me automate several processes in 2 of my companies. I would recommend them highly. They are quick to respond and works quickly and thoroughly"
+                        </p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">JH</span>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-semibold">Justin Hual</h4>
+                            <p class="text-gray-400 text-sm">HIP Creative Inc, USA</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 5 -->
+                <div class="glass-dark border-white/10 rounded-2xl p-8 testimonial-card hover-3d">
+                    <div class="mb-6">
+                        <div class="flex items-center mb-4">
+                        </div>
+                        <p class="text-gray-300 mb-6 italic">
+                            "I cannot speak more highly of them; simply blew our expectations out of the park. They built essentially our entire MVP operating system through a combination of google sheets and google apps script."
+                        </p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-blue-500 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">KA</span>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-semibold">Kate Alexander</h4>
+                            <p class="text-gray-400 text-sm">Co-Founder, Silq, USA</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 6 -->
+                <div class="glass-dark border-white/10 rounded-2xl p-8 testimonial-card hover-3d">
+                    <div class="mb-6">
+                        <div class="flex items-center mb-4">
+                        </div>
+                        <p class="text-gray-300 mb-6 italic">
+                            "Working with Shahbaz was an excellent experience! He's proven to be professional, reliable and extremely skilled time and time again."
+                        </p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">PB</span>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-semibold">Pete Bewsher</h4>
+                            <p class="text-gray-400 text-sm">ADSPERT, Germany</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section id="clients" class="py-20 px-4 relative overflow-hidden">
+        <div class="content-overlay max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-3d bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent leading-[1.2] pb-1">
+                    Trusted by Industry Leaders
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    We've partnered with companies across various industries to drive digital transformation
+                </p>
+            </div>
+
+            <!-- Scrolling Logos -->
+            <div class="scroll-container mb-8">
+                <div class="scroll-content flex items-center space-x-12">
+                    <!-- Client Logo 1 -->
+                    <div class="flex-shrink-0 px-4 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center hover-3d">
+                        <span class="text-white font-bold text-lg ">DAS Accounting</span>
+                    </div>
+                    
+                    <!-- Client Logo 2 -->
+                    <div class="flex-shrink-0 px-4 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-lg flex items-center justify-center hover-3d">
+                        <span class="text-white font-bold text-lg">LEON Moving</span>
+                    </div>
+                    
+                    <!-- Client Logo 3 -->
+                    <div class="flex-shrink-0 px-4 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center hover-3d">
+                        <span class="text-white font-bold text-lg">Paramount Construction</span>
+                    </div>
+                    
+                    <!-- Client Logo 4 -->
+                    <div class="flex-shrink-0 px-4 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center hover-3d">
+                        <span class="text-white font-bold text-lg">Colgate</span>
+                    </div>
+                    
+                    <!-- Client Logo 5 -->
+                    <div class="flex-shrink-0 px-4 h-16 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-lg flex items-center justify-center hover-3d">
+                        <span class="text-white font-bold text-lg">Byjus</span>
+                    </div>
+                    
+                    <!-- Client Logo 6 -->
+                    <div class="flex-shrink-0 px-4 h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-lg flex items-center justify-center hover-3d">
+                        <span class="text-white font-bold text-lg">OYO Rooms</span>
+                    </div>
+                    
+                    <!-- Client Logo 7 -->
+                    <div class="flex-shrink-0 px-4 h-16 bg-gradient-to-r from-teal-500 to-green-500 rounded-lg flex items-center justify-center hover-3d">
+                        <span class="text-white font-bold text-lg">Financial Times</span>
+                    </div>
+                    
+                    <!-- Client Logo 8 -->
+                    <div class="flex-shrink-0 px-4 h-16 bg-gradient-to-r from-pink-500 to-purple-500 rounded-lg flex items-center justify-center hover-3d">
+                        <span class="text-white font-bold text-lg">John Hopkins University</span>
+                    </div>
+
+                    <!-- Duplicate for seamless loop -->
+                    <div class="flex-shrink-0 px-4 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center hover-3d">
+                        <span class="text-white font-bold text-lg">Howard Miller</span>
+                    </div>
+                    
+                    <div class="flex-shrink-0  px-4 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-lg flex items-center justify-center hover-3d">
+                        <span class="text-white font-bold text-lg">Veolia</span>
+                    </div>
+                    
+                    <div class="flex-shrink-0  px-4 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center hover-3d">
+                        <span class="text-white font-bold text-lg">Prosus</span>
+                    </div>
+                    
+                    <div class="flex-shrink-0  px-4 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center hover-3d">
+                        <span class="text-white font-bold text-lg">Govt. of Bihar</span>
+                    </div>
+                    
+                    <div class="flex-shrink-0 px-4 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center hover-3d">
+                        <span class="text-white font-bold text-lg">LA Unified Schools</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta" class="py-20 px-4 relative overflow-hidden">
+        <!-- 3D Rocket Canvas -->
+        
+        
+        <!-- Background gradient -->
+        <div class="absolute inset-0 bg-gradient-to-br via-slate-900 to-purple-900/20"></div>
+        
+        <div class="content-overlay max-w-4xl mx-auto text-center">
+            <div class="rounded-3xl p-8 md:p-12">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-3d bg-gradient-to-r from-white via-blue-200 to-blue-400 bg-clip-text text-transparent leading-[1.2] pb-1">
+                    Your Concerns, Our Solutions
+                </h2>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8">
+                    Let's Connect for 30 Minutes Chat
+                </p>
+                <p class="text-lg text-gray-400 mb-12 max-w-2xl mx-auto">
+                    We will understand your challenges and share how our tech expertise can save you time, reduce costs, and speed up your growth.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
+                    <a href="https://calendly.com/shahbazh/30-minutes-consultation" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full transition-all duration-300 hover-3d">
+                        Book Free Consultation →
+                    </a>
+                    <a href="mailto:info@idearise.co?subject=Inquiry%20about%20services&body=Dear%20Team%2C%0D%0A%0D%0AI%20would%20like%20to%20know%20more%20about%20your%20solutions.%0D%0A%0D%0AThanks%2C%0D%0A"class="border border-white/20 text-white hover:bg-white/10 px-8 py-4 rounded-full transition-all duration-300 hover-3d">
+                        Send an Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 py-16">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Company info -->
+            <div>
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold text-3d bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent mb-4">
+                        Idea Rise Technologies
+                    </h3>
+                    <p class="text-gray-400 mb-6 whitespace-normal">
+                        Your own Virtual Tech Team, working for you, to make your organization more efficient.
+                    </p>
+                </div>
+
+                <!-- Contact info -->
+                <div class="space-y-3 mb-6">
+                    <div class="flex items-center space-x-3 text-gray-400">
+                        <!--<span class="text-blue-400"></span> -->
+                        <span>info@idearise.co</span>
+                    </div>
+                    <div class="flex items-center space-x-3 text-gray-400">
+                        <!--<span class="text-blue-400"></span>-->
+                        <span>Bangalore, India</span>
+                    </div>
+                </div>
+
+                <!-- Social links -->
+                <div class="flex space-x-4">
+                    <a href="https://www.linkedin.com/company/idea-rise-technologies" target="_blank" class="w-10 h-10 bg-slate-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover-3d">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" class="mercado-match" width="24" height="24" focusable="false">
+      <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path>
+    </svg>
+                    </a>
+
+                    <!--
+                    <a href="#" class="w-10 h-10 bg-slate-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover-3d">
+                        <span class="text-gray-400 hover:text-white">💼</span>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-slate-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover-3d">
+                        <span class="text-gray-400 hover:text-white">🐦</span>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-slate-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover-3d">
+                        <span class="text-gray-400 hover:text-white">📧</span>
+                    </a>
+                    -->
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div id="contact_form_div">
+                <h4 class="text-white font-semibold mb-4">Get in Touch</h4>
+                <div class="space-y-4">
+                    <input type="text" placeholder="Your Name" class="w-full bg-slate-800 border border-slate-700 text-white placeholder-gray-400 px-4 py-2 rounded-lg focus:outline-none focus:border-blue-500" id="fullname">
+                    <input type="email" placeholder="Your Email" class="w-full bg-slate-800 border border-slate-700 text-white placeholder-gray-400 px-4 py-2 rounded-lg focus:outline-none focus:border-blue-500" id="emailid">
+                    <textarea placeholder="Your Message" rows="4" class="w-full bg-slate-800 border border-slate-700 text-white placeholder-gray-400 px-4 py-2 rounded-lg focus:outline-none focus:border-blue-500" id="othermessage"></textarea>
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full transition-all duration-300 hover-3d" id="send_msg_btn" onclick="send_message()">
+                        Send Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-white/10 py-6">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">© 2025 Idea Rise Technologies. All rights reserved. |  <a href="privacy-policy.html" target="_blank">Privacy Policy</a> |     <a href="terms-of-use.html" target="_blank">Terms of Use</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        // ===== TYPEWRITER EFFECT CONFIGURATION =====
+        // Add your custom variations here - you can add as many as you want!
+        const typewriterVariations = [
+            "Virtual Tech Team",
+            "Automation Experts",
+            "Data Managers", 
+            "Digital Transformers",
+            "Technology Backbone"
+        ];
+
+        // Typewriter settings (customize these)
+        let typeSpeed = 50;        // Typing speed (lower = faster)
+        let deleteSpeed = 50;       // Deleting speed (lower = faster)
+        let pauseDuration = 1500;   // Pause before deleting (milliseconds)
+        let nextWordDelay = 500;    // Delay before typing next word
+
+        // Initialize all 3D scenes and animations
+        document.addEventListener('DOMContentLoaded', function() {            
+
+            // Initialize typewriter effect
+            initTypewriter();
+
+            // Matrix Rain Effect
+            initMatrixRain();
+            
+            // Hero 3D Scene
+            initHero3D();
+            
+            // Capabilities 3D Scene
+            initCapabilities3D();
+            
+            // Process 3D Scene
+            initProcess3D();
+            
+            // CTA 3D Scene
+            initCTA3D();
+            
+            // Particle System
+            initParticleSystem();
+            
+            // Smooth scrolling
+            initSmoothScrolling();
+            
+            // 3D hover effects
+            init3DHoverEffects();
+
+            // Mobile menu toggle
+            initMobileMenu();
+
+            // Navbar scroll effect
+            initNavbarScroll();
+        });
+
+        // ===== TYPEWRITER EFFECT =====
+        function initTypewriter() {
+            const typewriterElement = document.getElementById('typewriter');
+            let currentVariationIndex = 0;
+            let currentCharIndex = 0;
+            let isDeleting = false;
+
+            function type() {
+                const currentVariation = typewriterVariations[currentVariationIndex];
+                
+                if (isDeleting) {
+                    // Deleting characters
+                    typewriterElement.textContent = currentVariation.substring(0, currentCharIndex - 1);
+                    currentCharIndex--;
+                    
+                    if (currentCharIndex === 0) {
+                        isDeleting = false;
+                        currentVariationIndex = (currentVariationIndex + 1) % typewriterVariations.length;
+                        setTimeout(type, nextWordDelay);
+                        return;
+                    }
+                    setTimeout(type, deleteSpeed);
+                } else {
+                    // Typing characters
+                    typewriterElement.textContent = currentVariation.substring(0, currentCharIndex + 1);
+                    currentCharIndex++;
+                    
+                    if (currentCharIndex === currentVariation.length) {
+                        isDeleting = true;
+                        setTimeout(type, pauseDuration);
+                        return;
+                    }
+                    setTimeout(type, typeSpeed);
+                }
+            }
+
+            // Start the typewriter effect
+            type();
+        }
+
+        // ===== MOBILE MENU =====
+        function initMobileMenu() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when clicking on links
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
+
+        // ===== NAVBAR SCROLL EFFECT =====
+        function initNavbarScroll() {
+            const navbar = document.getElementById('navbar');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+        }
+
+        // Matrix Rain Effect
+        function initMatrixRain() {
+            const canvas = document.getElementById('matrixCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
+            const matrixArray = matrix.split("");
+            
+            const fontSize = 10;
+            const columns = canvas.width / fontSize;
+            
+            const drops = [];
+            for(let x = 0; x < columns; x++) {
+                drops[x] = 1;
+            }
+            
+            function drawMatrix() {
+                ctx.fillStyle = 'rgba(15, 23, 42, 0.04)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                ctx.fillStyle = '#3b82f6';
+                ctx.font = fontSize + 'px monospace';
+                
+                for(let i = 0; i < drops.length; i++) {
+                    const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                    
+                    if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+            }
+            
+            setInterval(drawMatrix, 35);
+            
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+        }
+
+        // Hero 3D Scene
+        function initHero3D() {
+            const container = document.getElementById('heroCanvas');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setClearColor(0x000000, 0);
+            container.appendChild(renderer.domElement);
+            
+            // Create floating geometric shapes
+            const geometries = [
+                
+            ];
+            
+            const materials = [
+                new THREE.MeshPhongMaterial({ color: 0x3b82f6, transparent: true, opacity: 0.7 }),
+                new THREE.MeshPhongMaterial({ color: 0x8b5cf6, transparent: true, opacity: 0.7 }),
+                new THREE.MeshPhongMaterial({ color: 0x06b6d4, transparent: true, opacity: 0.7 }),
+                new THREE.MeshPhongMaterial({ color: 0x10b981, transparent: true, opacity: 0.7 }),
+                new THREE.MeshPhongMaterial({ color: 0xf59e0b, transparent: true, opacity: 0.7 })
+            ];
+            
+            const meshes = [];
+            for(let i = 0; i < 15; i++) {
+                const geometry = geometries[Math.floor(Math.random() * geometries.length)];
+                const material = materials[Math.floor(Math.random() * materials.length)];
+                const mesh = new THREE.Mesh(geometry, material);
+                
+                mesh.position.x = (Math.random() - 0.5) * 20;
+                mesh.position.y = (Math.random() - 0.5) * 20;
+                mesh.position.z = (Math.random() - 0.5) * 20;
+                
+                mesh.rotation.x = Math.random() * Math.PI;
+                mesh.rotation.y = Math.random() * Math.PI;
+                
+                scene.add(mesh);
+                meshes.push(mesh);
+            }
+            
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
+            scene.add(ambientLight);
+            
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight.position.set(10, 10, 5);
+            scene.add(directionalLight);
+            
+            camera.position.z = 15;
+            
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                meshes.forEach((mesh, index) => {
+                    mesh.rotation.x += 0.01;
+                    mesh.rotation.y += 0.01;
+                    mesh.position.y += Math.sin(Date.now() * 0.001 + index) * 0.01;
+                    mesh.scale.set(0.4, 0.4, 0.4); 
+                });
+                
+                renderer.render(scene, camera);
+            }
+            animate();
+            
+            // Handle resize
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        }
+
+        // Capabilities 3D Scene
+        function initCapabilities3D() {
+            const container = document.getElementById('capabilitiesCanvas');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setClearColor(0x000000, 0);
+            container.appendChild(renderer.domElement);
+            
+            // Create DNA helix structure
+            const helixGeometry = new THREE.BufferGeometry();
+            const helixPositions = [];
+            const helixColors = [];
+            
+            for(let i = 0; i < 200; i++) {
+                const angle = (i / 200) * Math.PI * 8;
+                const x = Math.cos(angle) * 3;
+                const y = (i / 200) * 20 - 10;
+                const z = Math.sin(angle) * 3;
+                
+                helixPositions.push(x, y, z);
+                helixColors.push(0.2, 0.5, 1);
+            }
+            
+            helixGeometry.setAttribute('position', new THREE.Float32BufferAttribute(helixPositions, 3));
+            helixGeometry.setAttribute('color', new THREE.Float32BufferAttribute(helixColors, 3));
+            
+            const helixMaterial = new THREE.PointsMaterial({ 
+                size: 0.1, 
+                vertexColors: true,
+                transparent: true,
+                opacity: 0.8
+            });
+            
+            const helix = new THREE.Points(helixGeometry, helixMaterial);
+            scene.add(helix);
+            
+            camera.position.z = 15;
+            
+            function animate() {
+                requestAnimationFrame(animate);
+                helix.rotation.y += 0.005;
+                renderer.render(scene, camera);
+            }
+            animate();
+        }
+
+        // Process 3D Scene
+        function initProcess3D() {
+            const container = document.getElementById('processCanvas');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setClearColor(0x000000, 0);
+            container.appendChild(renderer.domElement);
+            
+            // Create flowing data stream
+            const streamGeometry = new THREE.BufferGeometry();
+            const streamPositions = [];
+            const streamColors = [];
+            
+            for(let i = 0; i < 1000; i++) {
+                const x = (Math.random() - 0.5) * 50;
+                const y = (Math.random() - 0.5) * 20;
+                const z = (Math.random() - 0.5) * 50;
+                
+                streamPositions.push(x, y, z);
+                
+                const color = new THREE.Color();
+                color.setHSL((x + 25) / 50, 1, 0.5);
+                streamColors.push(color.r, color.g, color.b);
+            }
+            
+            streamGeometry.setAttribute('position', new THREE.Float32BufferAttribute(streamPositions, 3));
+            streamGeometry.setAttribute('color', new THREE.Float32BufferAttribute(streamColors, 3));
+            
+            const streamMaterial = new THREE.PointsMaterial({ 
+                size: 0.05, 
+                vertexColors: true,
+                transparent: true,
+                opacity: 0.6
+            });
+            
+            const stream = new THREE.Points(streamGeometry, streamMaterial);
+            scene.add(stream);
+            
+            camera.position.z = 20;
+            
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                const positions = stream.geometry.attributes.position.array;
+                for(let i = 0; i < positions.length; i += 3) {
+                    positions[i] += Math.sin(Date.now() * 0.001 + i) * 0.01;
+                    positions[i + 1] += Math.cos(Date.now() * 0.001 + i) * 0.01;
+                }
+                stream.geometry.attributes.position.needsUpdate = true;
+                
+                stream.rotation.y += 0.002;
+                renderer.render(scene, camera);
+            }
+            animate();
+        }
+
+        // CTA 3D Scene
+        function initCTA3D() {
+            return;
+            const container = document.getElementById('ctaCanvas');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setClearColor(0x000000, 0);
+            container.appendChild(renderer.domElement);
+            
+            // Create 3D rocket
+            const rocketGroup = new THREE.Group();
+            
+            // Rocket body
+            const bodyGeometry = new THREE.ConeGeometry(0.3, 2, 8);
+            const bodyMaterial = new THREE.MeshPhongMaterial({ color: 0x3b82f6 });
+            const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
+            body.position.y = 1;
+            rocketGroup.add(body);
+            
+            // Rocket fins
+            for(let i = 0; i < 4; i++) {
+                const finGeometry = new THREE.BoxGeometry(0.1, 0.5, 0.3);
+                const finMaterial = new THREE.MeshPhongMaterial({ color: 0x1e40af });
+                const fin = new THREE.Mesh(finGeometry, finMaterial);
+                
+                const angle = (i / 4) * Math.PI * 2;
+                fin.position.x = Math.cos(angle) * 0.3;
+                fin.position.z = Math.sin(angle) * 0.3;
+                fin.position.y = 0;
+                
+                rocketGroup.add(fin);
+            }
+            
+            // Exhaust particles
+            const exhaustGeometry = new THREE.BufferGeometry();
+            const exhaustPositions = [];
+            const exhaustColors = [];
+            
+            for(let i = 0; i < 100; i++) {
+                const x = (Math.random() - 0.5) * 0.5;
+                const y = -Math.random() * 3;
+                const z = (Math.random() - 0.5) * 0.5;
+                
+                exhaustPositions.push(x, y, z);
+                
+                const intensity = Math.random();
+                exhaustColors.push(1, intensity * 0.5, 0);
+            }
+            
+            exhaustGeometry.setAttribute('position', new THREE.Float32BufferAttribute(exhaustPositions, 3));
+            exhaustGeometry.setAttribute('color', new THREE.Float32BufferAttribute(exhaustColors, 3));
+            
+            const exhaustMaterial = new THREE.PointsMaterial({ 
+                size: 0.1, 
+                vertexColors: true,
+                transparent: true,
+                opacity: 0.8
+            });
+            
+            const exhaust = new THREE.Points(exhaustGeometry, exhaustMaterial);
+            rocketGroup.add(exhaust);
+            
+            scene.add(rocketGroup);
+            
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
+            scene.add(ambientLight);
+            
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight.position.set(5, 5, 5);
+            scene.add(directionalLight);
+            
+            camera.position.z = 8;
+            
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                // Animate rocket
+                rocketGroup.rotation.y += 0.01;
+                rocketGroup.position.y = Math.sin(Date.now() * 0.002) * 0.5;
+                
+                // Animate exhaust
+                const positions = exhaust.geometry.attributes.position.array;
+                for(let i = 1; i < positions.length; i += 3) {
+                    positions[i] -= 0.05;
+                    if(positions[i] < -3) {
+                        positions[i] = 0;
+                    }
+                }
+                exhaust.geometry.attributes.position.needsUpdate = true;
+                
+                renderer.render(scene, camera);
+            }
+            animate();
+        }
+
+        // Particle System
+        function initParticleSystem() {
+            const container = document.getElementById('particleCanvas');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setClearColor(0x000000, 0);
+            container.appendChild(renderer.domElement);
+            
+            // Create particle system
+            const particleGeometry = new THREE.BufferGeometry();
+            const particlePositions = [];
+            const particleVelocities = [];
+            
+            for(let i = 0; i < 50; i++) {
+                particlePositions.push(
+                    (Math.random() - 0.5) * 100,
+                    (Math.random() - 0.5) * 100,
+                    (Math.random() - 0.5) * 100
+                );
+                
+                particleVelocities.push(
+                    (Math.random() - 0.5) * 0.02,
+                    (Math.random() - 0.5) * 0.02,
+                    (Math.random() - 0.5) * 0.02
+                );
+            }
+            
+            particleGeometry.setAttribute('position', new THREE.Float32BufferAttribute(particlePositions, 3));
+            
+            const particleMaterial = new THREE.PointsMaterial({ 
+                color: 0x3b82f6,
+                size: 0.02,
+                transparent: true,
+                opacity: 0.6
+            });
+            
+            const particles = new THREE.Points(particleGeometry, particleMaterial);
+            scene.add(particles);
+            
+            camera.position.z = 30;
+            
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                const positions = particles.geometry.attributes.position.array;
+                for(let i = 0; i < positions.length; i += 3) {
+                    positions[i] += particleVelocities[i];
+                    positions[i + 1] += particleVelocities[i + 1];
+                    positions[i + 2] += particleVelocities[i + 2];
+                    
+                    // Wrap particles around screen boundaries
+                    if(positions[i] > 50) positions[i] = -50;
+                    if(positions[i] < -50) positions[i] = 50;
+                    if(positions[i + 1] > 50) positions[i + 1] = -50;
+                    if(positions[i + 1] < -50) positions[i + 1] = 50;
+                    if(positions[i + 2] > 50) positions[i + 2] = -50;
+                    if(positions[i + 2] < -50) positions[i + 2] = 50;
+                }
+                particles.geometry.attributes.position.needsUpdate = true;
+                
+                particles.rotation.y += 0.001;
+                renderer.render(scene, camera);
+            }
+            animate();
+        }
+
+        // Smooth scrolling
+        function initSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // 3D hover effects with sparkling borders only
+        function init3DHoverEffects() {
+
+            const hover3DElements = document.querySelectorAll('.hover-3d');
+            
+            hover3DElements.forEach(element => {
+                element.addEventListener('mouseenter', function() {
+                    // Only add a subtle glow effect, no shape changes
+                    gsap.to(this, {
+                        duration: 0.3,
+                        boxShadow: "0 0 30px rgba(59, 130, 246, 0.5)",
+                        ease: "power2.out"
+                    });
+                });
+                
+                element.addEventListener('mouseleave', function() {
+                    gsap.to(this, {
+                        duration: 0.3,
+                        boxShadow: "0 0 0px rgba(59, 130, 246, 0)",
+                        ease: "power2.out"
+                    });
+                });
+            });
+        }
+
+        // Add floating animation to elements
+        function addFloatingAnimation() {
+            const floatingElements = document.querySelectorAll('.float-animation');
+            floatingElements.forEach((element, index) => {
+                gsap.to(element, {
+                    y: -20,
+                    duration: 2 + Math.random() * 2,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "power2.inOut",
+                    delay: index * 0.2
+                });
+            });
+        }
+
+        // Initialize floating animations after DOM load
+        setTimeout(addFloatingAnimation, 1000);
+
+        // Add intersection observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for scroll animations
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(50px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Add click handlers for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Create ripple effect
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add CSS for ripple effect
+        const style = document.createElement('style');
+        style.textContent = `
+            button {
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.3);
+                transform: scale(0);
+                animation: ripple-animation 0.6s linear;
+                pointer-events: none;
+            }
+            
+            @keyframes ripple-animation {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Performance optimization: Pause animations when not visible
+        document.addEventListener('visibilitychange', function() {
+            const canvases = document.querySelectorAll('canvas');
+            canvases.forEach(canvas => {
+                if (document.hidden) {
+                    canvas.style.animationPlayState = 'paused';
+                } else {
+                    canvas.style.animationPlayState = 'running';
+                }
+            });
+        });
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-navigation');
+            }
+        });
+
+        document.addEventListener('mousedown', function() {
+            document.body.classList.remove('keyboard-navigation');
+        });
+
+        // Add focus styles for keyboard navigation
+        const keyboardStyle = document.createElement('style');
+        keyboardStyle.textContent = `
+            .keyboard-navigation *:focus {
+                outline: 2px solid #3b82f6;
+                outline-offset: 2px;
+            }
+        `;
+        document.head.appendChild(keyboardStyle);
+    </script>
+</body>
+</html>

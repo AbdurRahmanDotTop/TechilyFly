@@ -1,91 +1,83 @@
 ---
 import GradientHeading from './GradientHeading.astro';
 import GlassCard from './GlassCard.astro';
+import Button from './Button.astro';
 
 const testimonials = [
   {
-    quote: "I got my website made by TechilyFly.com, and it was amazing! They helped me with everything—domain, hosting, and designing my website. The team was super friendly and explained everything in a simple way.",
-    name: "Rosely Dot In",
-    role: "Founder, Rosely Dot In",
-    country: "India",
-    initials: "RD"
+    quote: "I got my website made by TechilyFly.com, and it was amazing! They helped me with everything—domain, hosting, and designing my website. The team was super friendly and explained everything in a simple way. They made sure my website looked cool and worked perfectly.\n\nI didn’t have to worry about anything because they took care of it all. If you want a website that looks great and is easy to use, TechilyFly.com is the best choice. I’m really happy with their work, and I would definitely recommend them to everyone!\n\nThank you, TechilyFly.com, for making my website dreams come true! 😊",
+    name: "roselydotin IN",
+    role: "Trustpilot Review",
+    date: "Feb 5, 2025",
+    initials: "RO",
+    image: "https://user-images.trustpilot.com/67a33cae7bf756b5c229ccf5/73x73.png"
   },
   {
-    quote: "Had a great experience working with techily fly. Work completed by stipulated time. Good customer support was provided. Highly recommended for technical implementations.",
-    name: "Neil Bhatnagar",
-    role: "Ethsltd",
-    country: "India",
-    initials: "NB"
+    quote: "Had a great experience working with techily fly. Work completed by stipulated time. Good customer support was provided.",
+    name: "Neil Bhatnagar NP",
+    role: "Trustpilot Review",
+    date: "Jun 13, 2023",
+    initials: "NB",
+    image: "https://user-images.trustpilot.com/64875452818bf50011cbc5bd/73x73.png"
   },
   {
-    quote: "Techily Fly delivered an outstanding web platform for our travel business. Their attention to detail and technical execution was flawless. We've seen a noticeable increase in our online bookings.",
-    name: "Andaman Anchorage",
-    role: "Management",
-    country: "India",
-    initials: "AA"
-  },
-  {
-    quote: "Finding a reliable tech partner is hard. Techily Fly delivered our portal ahead of schedule and with better features than we initially planned. They truly understand business goals.",
-    name: "Aethron Global",
-    role: "Operations Team",
-    country: "Global",
-    initials: "AG"
-  },
-  {
-    quote: "Our new online ordering system is incredibly fast and user-friendly. Techily Fly handled everything from the backend architecture to the frontend design perfectly.",
-    name: "Pizza-House.uk",
-    role: "Management",
-    country: "UK",
-    initials: "PH"
-  },
-  {
-    quote: "Exceptional technical expertise combined with crystal-clear communication. They built our NGO's digital presence with care and precision, allowing us to reach more people.",
-    name: "ASR Foundation",
-    role: "Director",
-    country: "India",
-    initials: "AF"
+    quote: "Abdulrahman baut he help karta hai Mai jo vhi madat Mangta Hun Uska Samadhan HAL Karte Hain Bahut hi Nek insan hai Abdul Rahman Mai To Chahunga ki aap log ko vah Bhi Koi madad ki jarurat ho to HAL Karva sakte hain dhan Bad Abdulrahman",
+    name: "Anjesh Yadav IN",
+    role: "Trustpilot Review",
+    date: "Jan 7, 2023",
+    initials: "AY",
+    image: null
   }
 ];
 ---
 
-<section id="testimonials" class="py-24 relative border-t border-white/10">
-  <div class="container mx-auto px-6 max-w-7xl relative z-10">
-    <div class="text-center max-w-3xl mx-auto mb-16">
-      <GradientHeading as="h2" class="text-[clamp(2rem,4vw+1rem,3.5rem)] font-extrabold mb-6">
+<section id="testimonials" class="py-16 md:py-24 lg:py-32 relative">
+  <div class="container mx-auto px-4 sm:px-6 max-w-7xl relative z-10">
+    <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+      <GradientHeading as="h2" class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 md:mb-6">
         What Our Clients Say
       </GradientHeading>
-      <p class="text-[clamp(1.125rem,2vw,1.25rem)] text-tf-graphite-40 max-w-2xl mx-auto">
+      <p class="text-lg sm:text-xl text-tf-graphite-40 px-2">
         We build long-term partnerships based on trust, transparency, and results.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
       {testimonials.map((t, i) => (
-        <GlassCard class="p-8 flex flex-col h-full hover-3d">
-          <p class="text-tf-cloud/70 leading-relaxed flex-grow mb-8 text-[15px]">
-            "{t.quote}"
-          </p>
-          
-          <div class="flex items-center gap-4 mt-auto">
-            <!-- Avatar -->
-            <div class="w-10 h-10 rounded-full bg-tf-coral flex items-center justify-center text-white font-bold text-sm shrink-0">
-              {t.initials}
-            </div>
+        <GlassCard class="p-6 sm:p-8 flex flex-col h-full">
+          <div class="flex items-center gap-4 mb-6">
+            {t.image ? (
+              <img src={t.image} alt={t.name} class="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover shadow-[0_4px_15px_var(--color-tf-coral-35)] shrink-0" />
+            ) : (
+              <!-- Gradient Initial Avatar -->
+              <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[image:var(--gradient-signal)] flex items-center justify-center text-white font-bold text-xl shadow-[0_4px_15px_var(--color-tf-coral-35)] shrink-0">
+                {t.initials}
+              </div>
+            )}
             <div>
-              <h4 class="text-sm font-bold text-white mb-0.5">{t.name}</h4>
-              <p class="text-[11px] text-tf-graphite-40 uppercase tracking-wider">{t.role}</p>
+              <h4 class="text-base sm:text-lg font-bold text-white">{t.name}</h4>
+              <p class="text-xs sm:text-sm text-tf-coral-light font-mono">{t.role}</p>
+              <p class="text-xs text-tf-graphite-40">{t.date}</p>
             </div>
+          </div>
+          
+          <div class="relative flex-grow">
+            <svg class="absolute -top-2 -left-2 w-6 h-6 sm:-top-4 sm:-left-2 sm:w-8 sm:h-8 text-tf-coral/20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/></svg>
+            <p class="text-sm sm:text-base text-tf-cloud italic relative z-10 pl-4 sm:pl-6 leading-relaxed whitespace-pre-wrap">
+              "{t.quote}"
+            </p>
           </div>
         </GlassCard>
       ))}
     </div>
 
-    <!-- Trustpilot Link -->
-    <div class="mt-16 text-center">
-      <a href="https://www.trustpilot.com/review/techilyfly.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 bg-white/5 border border-white/10 rounded-full hover:bg-tf-coral hover:border-tf-coral hover:text-white transition-all group">
-        <span class="text-tf-cloud group-hover:text-white font-medium">Read more reviews or leave yours on Trustpilot</span>
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-tf-coral group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
-      </a>
+    <div class="flex justify-center">
+      <Button href="https://www.trustpilot.com/review/techilyfly.com" target="_blank" rel="noopener noreferrer" variant="secondary" class="flex items-center gap-2">
+        Read more on Trustpilot
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[#00b67a]" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M22 12l-9-9v6H3v6h10v6z" />
+        </svg>
+      </Button>
     </div>
   </div>
 </section>
