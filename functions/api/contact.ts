@@ -25,32 +25,6 @@ export async function onRequestPost(context: { request: Request, env: any }) {
       }
     }
 
-    // Send email using Cloudflare Email Routing bindings (Free & Unlimited up to Worker limits)
-    if (env.SEND_EMAIL) {
-      const emailText = `New Contact Form Submission:
-
-Name: ${body.name}
-Mobile: ${body.mobile}
-Email: ${body.email}
-Subject: ${body.subject}
-
-Message:
-${body.message}
-`;
-
-      try {
-        const msg = new EmailMessage(
-          "noreply@techilyfly.com",
-          env.EMAIL_ALERTS_TO || "support@techilyfly.com",
-          "New Contact Form Lead: " + body.subject,
-          emailText
-        );
-        
-        await env.SEND_EMAIL.send(msg);
-      } catch (e) {
-        console.error("Email send failed:", e);
-      }
-    }
 
     // Store in Google Sheets via Apps Script Webhook (Free & Unlimited)
     if (env.GOOGLE_SHEET_WEBHOOK_URL) {
