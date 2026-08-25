@@ -24,6 +24,16 @@ const { title = "Techily Fly - Your Own Virtual Tech Team" } = Astro.props;
     
     <!-- Cloudflare Web Analytics -->
     <!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "YOUR_TOKEN"}'></script> -->
+
+    <style is:global>
+      /* Force Tawk.to chat bubble to be smaller on mobile */
+      @media (max-width: 768px) {
+        iframe[title="chat widget"] {
+          transform: scale(0.75) !important;
+          transform-origin: bottom right !important;
+        }
+      }
+    </style>
   </head>
   <body class="bg-tf-graphite text-tf-cloud font-sans antialiased overflow-x-hidden">
     
