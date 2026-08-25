@@ -35,6 +35,14 @@ const { title = "Techily Fly - Your Own Virtual Tech Team" } = Astro.props;
 
     <slot />
 
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-6 left-6 z-50 p-3 rounded-full bg-tf-graphite/80 backdrop-blur-md border border-tf-coral text-tf-coral shadow-[0_0_15px_var(--color-tf-coral-35)] opacity-0 invisible transition-all duration-300 hover:scale-110 hover:bg-tf-coral hover:text-white" aria-label="Back to Top">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="19" x2="12" y2="5"></line>
+        <polyline points="5 12 12 5 19 12"></polyline>
+      </svg>
+    </button>
+
     <script>
       import { initHeroParticles } from '../scenes/hero-particles';
       import { initMatrixRain } from '../scenes/matrix-rain';
@@ -47,6 +55,35 @@ const { title = "Techily Fly - Your Own Virtual Tech Team" } = Astro.props;
         initCapabilitiesHelix('capabilitiesCanvas');
         initProcessStream('processCanvas');
       });
+
+      // Back to Top Logic
+      const backToTop = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTop?.classList.remove('opacity-0', 'invisible');
+          backToTop?.classList.add('opacity-100', 'visible');
+        } else {
+          backToTop?.classList.add('opacity-0', 'invisible');
+          backToTop?.classList.remove('opacity-100', 'visible');
+        }
+      });
+      backToTop?.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
     </script>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/61f0d07fb9e4e21181bbeec3/1fqaastd0';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
   </body>
 </html>
