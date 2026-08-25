@@ -27,9 +27,10 @@ export async function onRequestPost(context: { request: Request, env: any }) {
 
 
     // Store in Google Sheets via Apps Script Webhook (Free & Unlimited)
-    if (env.GOOGLE_SHEET_WEBHOOK_URL) {
+    const webhookUrl = env.GOOGLE_SHEET_WEBHOOK_URL || "https://script.google.com/macros/s/AKfycbxqg8Mqrz-5EqmRZbb5_ziG0-XZEFyh4STiIdTsMalDZ1Bmb9Z0GRmWW2y2D5HvyP_O0Q/exec";
+    if (webhookUrl) {
       try {
-        await fetch(env.GOOGLE_SHEET_WEBHOOK_URL, {
+        await fetch(webhookUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
