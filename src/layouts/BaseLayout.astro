@@ -1,0 +1,79 @@
+---
+import '@fontsource/manrope/500.css';
+import '@fontsource/manrope/700.css';
+import '@fontsource/geist-mono/400.css';
+import '../styles/tokens.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { 
+  title = "Techily Fly - Your Own Virtual Tech Team", 
+  description = "We handle everything from strategy to execution, AI to analytics, like your in-house Software team would." 
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		
+		<!-- SEO & Metadata -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta property="og:title" content="Techily Fly" />
+		<meta property="og:image" content="https://techilyfly.com/images/og-techily-fly.png" />
+		<meta property="og:description" content={description} />
+		
+		<!-- Cloudflare Web Analytics (Placeholder) -->
+		<!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "YOUR_TOKEN"}'></script> -->
+	</head>
+	<body class="bg-tf-graphite text-tf-cloud font-sans antialiased overflow-x-hidden relative">
+		<!-- Global Unified Background -->
+		<canvas id="matrix-canvas" class="fixed inset-0 w-full h-full z-0 opacity-20 pointer-events-none"></canvas>
+
+		<div class="relative z-10">
+			<slot />
+		</div>
+
+		<script>
+			// Global Scroll Reveal Animation
+			const observerOptions = {
+				threshold: 0.1,
+				rootMargin: '0px 0px -50px 0px'
+			};
+
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						(entry.target as HTMLElement).style.opacity = '1';
+						(entry.target as HTMLElement).style.transform = 'translateY(0)';
+						observer.unobserve(entry.target); // Only animate once
+					}
+				});
+			}, observerOptions);
+
+			// Initialize all sections for scroll animation
+			document.addEventListener('DOMContentLoaded', () => {
+				document.querySelectorAll('section').forEach(section => {
+					section.style.opacity = '0';
+					section.style.transform = 'translateY(50px)';
+					section.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+					observer.observe(section);
+				});
+			});
+		</script>
+		<script>
+			import { initMatrixRain } from '../scenes/matrix-rain';
+
+			document.addEventListener('DOMContentLoaded', () => {
+				initMatrixRain('matrix-canvas');
+			});
+		</script>
+	</body>
+</html>

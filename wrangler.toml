@@ -1,0 +1,16 @@
+name = "techily-fly"
+compatibility_date = "2026-08-25"
+pages_build_output_dir = "dist"
+
+# D1 Database binding
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "techily-fly-db"
+# database_id = "YOUR_DATABASE_ID"
+
+# Send Email Binding (assuming SendGrid or MailChannels via Workers or CF native send_email if available)
+# [[send_email]]
+# name = "SEND_EMAIL"
+# destination_address = "TechilyFly@gmail.com"
+
+# Turnstile configuration would be in the environment variables (e.g. TURNSTILE_SECRET_KEY)

@@ -1,0 +1,80 @@
+---
+import GradientHeading from './GradientHeading.astro';
+import GlassCard from './GlassCard.astro';
+
+const steps = [
+  {
+    num: "01",
+    title: "Understand/Strategy",
+    description: "Define your business goals and technical requirements",
+    detail: "Requirements analysis, technical feasibility, and project roadmap creation"
+  },
+  {
+    num: "02",
+    title: "Design",
+    description: "Creating intuitive user experiences and system architecture",
+    detail: "UI/UX design, system architecture, and database design"
+  },
+  {
+    num: "03",
+    title: "Build",
+    description: "Agile development with continuous integration and testing",
+    detail: "Sprint-based development, code reviews, and automated testing"
+  },
+  {
+    num: "04",
+    title: "Deploy",
+    description: "Seamless deployment to production with monitoring setup",
+    detail: "Cloud deployment, performance optimization, and security hardening"
+  },
+  {
+    num: "05",
+    title: "Support",
+    description: "Ongoing maintenance, updates, and feature enhancements",
+    detail: "24/7 monitoring, regular updates, and continuous improvement"
+  }
+];
+---
+
+<section id="process" class="py-24 relative overflow-hidden border-t border-white/10">
+  <!-- 3D Flowing Data Stream -->
+  <div id="process-stream" class="absolute inset-0 z-0 opacity-40 pointer-events-none"></div>
+
+  <div class="container mx-auto px-6 max-w-7xl relative z-10">
+    <div class="text-center max-w-3xl mx-auto mb-20">
+      <GradientHeading as="h2" class="text-[clamp(2rem,4vw+1rem,3.5rem)] font-extrabold mb-6">
+        How We Work
+      </GradientHeading>
+      <p class="text-[clamp(1.125rem,2vw,1.25rem)] text-tf-graphite-40 max-w-2xl mx-auto">
+        Our proven methodology for turning complex problems into elegant solutions.
+      </p>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto mt-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 relative z-10">
+        {steps.map((step, i) => (
+          <GlassCard hoverEffect={true} class="flex flex-col p-6 text-center relative overflow-hidden group">
+            <span class="text-7xl font-black text-white/5 absolute -top-4 -right-4 pointer-events-none select-none transition-transform group-hover:scale-110 z-0">
+              {step.num}
+            </span>
+            
+            <div class="relative z-10 flex flex-col flex-1">
+              <h3 class="text-xl font-semibold mb-3 text-white group-hover:text-tf-coral transition-colors">{step.title}</h3>
+              <p class="text-[clamp(0.875rem,1.5vw,1rem)] text-tf-cloud/80 mb-4">{step.description}</p>
+              <div class="mt-auto">
+                <p class="text-xs text-tf-coral-light/90 leading-relaxed">{step.detail}</p>
+              </div>
+            </div>
+          </GlassCard>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { initProcessStream } from '../scenes/process-stream';
+  document.addEventListener('DOMContentLoaded', () => {
+    initProcessStream('process-stream');
+  });
+</script>

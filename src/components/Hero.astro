@@ -1,0 +1,70 @@
+---
+import Button from './Button.astro';
+import TypewriterText from './TypewriterText.astro';
+import GlassCard from './GlassCard.astro';
+
+const words = [
+  "Virtual Tech Team",
+  "Automation Experts",
+  "Data Managers",
+  "Digital Transformers",
+  "Technology Backbone"
+];
+
+const stats = [
+  { value: "300+", label: "Projects Delivered" },
+  { value: "40+", label: "Countries Served" },
+  { value: "30%", label: "Average Cost Saving" }
+];
+---
+
+<section id="hero" class="relative min-h-screen flex items-center justify-center pt-20">
+  
+  <!-- Floating 3D Particles -->
+  <div id="hero-particles" class="absolute inset-0 z-0 pointer-events-none"></div>
+
+  <div class="container mx-auto px-6 max-w-7xl relative z-10">
+    <div class="text-center max-w-4xl mx-auto space-y-8">
+      
+      <h1 class="text-[clamp(2.5rem,5vw+1rem,4rem)] font-bold mb-6 text-transparent bg-clip-text bg-[image:var(--gradient-heading)] leading-[1.2] pb-1 h-[150px]">
+        <span class="text-white">We are your&nbsp;</span>
+        <TypewriterText words={words} />
+      </h1>
+      
+      <p class="text-lg mb-12 text-tf-cloud/70 max-w-2xl mx-auto">
+        We handle everything from strategy to execution, AI to analytics, <br class="hidden md:block">like your in-house Software team would.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <Button href="/#contact" variant="primary">
+          Start Now →
+        </Button>
+        <Button href="/case-studies" variant="secondary">
+          Case Studies
+        </Button>
+      </div>
+
+      <!-- Stats Row -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+        {stats.map((stat, i) => (
+          <GlassCard hoverEffect={true} class="p-6 text-left" style={`animation-delay: ${i * 0.5}s`}>
+            <div class="text-3xl font-bold text-tf-coral mb-2">
+              {stat.value}
+            </div>
+            <div class="text-tf-cloud/70">
+              {stat.label}
+            </div>
+          </GlassCard>
+        ))}
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<script>
+  import { initHeroParticles } from '../scenes/hero-particles';
+  document.addEventListener('DOMContentLoaded', () => {
+    initHeroParticles('hero-particles');
+  });
+</script>

@@ -1,0 +1,49 @@
+---
+const clients = [
+  { name: "Ethsltd", url: "https://ethsltd.com/" },
+  { name: "AndamanAnchorage", url: "https://andamananchorage.com/" },
+  { name: "Aethron Global", url: "https://aethronglobal.com/" },
+  { name: "Pizza-House.uk", url: "https://pizza-house.uk/" },
+  { name: "Rosely Dot In", url: "https://rosely.in" },
+  { name: "Asr Foundation", url: "https://asrfoundation.org/" }
+];
+---
+
+<section id="clients" class="py-20 border-y border-white/10 overflow-hidden">
+  <div class="container mx-auto px-6 max-w-7xl mb-12 text-center">
+    <p class="text-sm font-mono text-tf-graphite-40 uppercase tracking-widest">
+      Trusted by Industry Leaders
+    </p>
+  </div>
+
+  <div class="relative w-full flex overflow-hidden group">
+    <!-- Duplicate the list to create a seamless infinite scroll -->
+    <div class="flex gap-4 animate-marquee whitespace-nowrap min-w-full justify-around pr-4">
+      {clients.map((client) => (
+        <a href={client.url} target="_blank" rel="noopener noreferrer" class="px-6 py-2 rounded-full text-sm font-medium bg-tf-coral-10 border border-tf-coral/20 text-tf-coral hover:bg-tf-coral hover:text-white transition-colors duration-300">
+          {client.name}
+        </a>
+      ))}
+    </div>
+    <div class="flex gap-4 animate-marquee whitespace-nowrap min-w-full justify-around pr-4" aria-hidden="true">
+      {clients.map((client) => (
+        <a href={client.url} target="_blank" rel="noopener noreferrer" class="px-6 py-2 rounded-full text-sm font-medium bg-tf-coral-10 border border-tf-coral/20 text-tf-coral hover:bg-tf-coral hover:text-white transition-colors duration-300">
+          {client.name}
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+  .animate-marquee {
+    animation: marquee 25s linear infinite;
+  }
+  .group:hover .animate-marquee {
+    animation-play-state: paused;
+  }
+</style>

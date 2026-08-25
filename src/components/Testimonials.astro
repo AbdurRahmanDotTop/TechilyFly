@@ -1,0 +1,91 @@
+---
+import GradientHeading from './GradientHeading.astro';
+import GlassCard from './GlassCard.astro';
+
+const testimonials = [
+  {
+    quote: "I got my website made by TechilyFly.com, and it was amazing! They helped me with everything—domain, hosting, and designing my website. The team was super friendly and explained everything in a simple way.",
+    name: "Rosely Dot In",
+    role: "Founder, Rosely Dot In",
+    country: "India",
+    initials: "RD"
+  },
+  {
+    quote: "Had a great experience working with techily fly. Work completed by stipulated time. Good customer support was provided. Highly recommended for technical implementations.",
+    name: "Neil Bhatnagar",
+    role: "Ethsltd",
+    country: "India",
+    initials: "NB"
+  },
+  {
+    quote: "Techily Fly delivered an outstanding web platform for our travel business. Their attention to detail and technical execution was flawless. We've seen a noticeable increase in our online bookings.",
+    name: "Andaman Anchorage",
+    role: "Management",
+    country: "India",
+    initials: "AA"
+  },
+  {
+    quote: "Finding a reliable tech partner is hard. Techily Fly delivered our portal ahead of schedule and with better features than we initially planned. They truly understand business goals.",
+    name: "Aethron Global",
+    role: "Operations Team",
+    country: "Global",
+    initials: "AG"
+  },
+  {
+    quote: "Our new online ordering system is incredibly fast and user-friendly. Techily Fly handled everything from the backend architecture to the frontend design perfectly.",
+    name: "Pizza-House.uk",
+    role: "Management",
+    country: "UK",
+    initials: "PH"
+  },
+  {
+    quote: "Exceptional technical expertise combined with crystal-clear communication. They built our NGO's digital presence with care and precision, allowing us to reach more people.",
+    name: "ASR Foundation",
+    role: "Director",
+    country: "India",
+    initials: "AF"
+  }
+];
+---
+
+<section id="testimonials" class="py-24 relative border-t border-white/10">
+  <div class="container mx-auto px-6 max-w-7xl relative z-10">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <GradientHeading as="h2" class="text-[clamp(2rem,4vw+1rem,3.5rem)] font-extrabold mb-6">
+        What Our Clients Say
+      </GradientHeading>
+      <p class="text-[clamp(1.125rem,2vw,1.25rem)] text-tf-graphite-40 max-w-2xl mx-auto">
+        We build long-term partnerships based on trust, transparency, and results.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {testimonials.map((t, i) => (
+        <GlassCard class="p-8 flex flex-col h-full hover-3d">
+          <p class="text-tf-cloud/70 leading-relaxed flex-grow mb-8 text-[15px]">
+            "{t.quote}"
+          </p>
+          
+          <div class="flex items-center gap-4 mt-auto">
+            <!-- Avatar -->
+            <div class="w-10 h-10 rounded-full bg-tf-coral flex items-center justify-center text-white font-bold text-sm shrink-0">
+              {t.initials}
+            </div>
+            <div>
+              <h4 class="text-sm font-bold text-white mb-0.5">{t.name}</h4>
+              <p class="text-[11px] text-tf-graphite-40 uppercase tracking-wider">{t.role}</p>
+            </div>
+          </div>
+        </GlassCard>
+      ))}
+    </div>
+
+    <!-- Trustpilot Link -->
+    <div class="mt-16 text-center">
+      <a href="https://www.trustpilot.com/review/techilyfly.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 bg-white/5 border border-white/10 rounded-full hover:bg-tf-coral hover:border-tf-coral hover:text-white transition-all group">
+        <span class="text-tf-cloud group-hover:text-white font-medium">Read more reviews or leave yours on Trustpilot</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-tf-coral group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+      </a>
+    </div>
+  </div>
+</section>

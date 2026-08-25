@@ -1,0 +1,359 @@
+{
+  "version": 1,
+  "skills": {
+    "accessibility": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "skillPath": "skills/accessibility/SKILL.md",
+      "computedHash": "88c64dead9bb55925c7b983f5fd95cfecf30bd8c076fd384cdb17019d1becd87"
+    },
+    "add-integration": {
+      "source": "incluud/astro-agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/add-integration/SKILL.md",
+      "computedHash": "48a510e1f2ca78289162a824b1a981c30a16373e6c36c09f9835284ec6d78337"
+    },
+    "agent-browser": {
+      "source": "vercel-labs/agent-browser",
+      "sourceType": "github",
+      "skillPath": "skills/agent-browser/SKILL.md",
+      "computedHash": "a674b7d81066e3cc471a7512ddb4ae724418cbfefa75cbb050b0dc430e4d57a0"
+    },
+    "ai-seo": {
+      "source": "karero/website-builder",
+      "sourceType": "github",
+      "skillPath": "skills/ai-seo/SKILL.md",
+      "computedHash": "512ba4a408c7cf4d7e52b43ed15bb408ea1157bc790fb56b6d6c8cc3b96593d4"
+    },
+    "astro-best-practices": {
+      "source": "incluud/astro-agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/astro-best-practices/SKILL.md",
+      "computedHash": "896a30270363d3bfcfa611e501cf5b7cd6e386d5f86a3ae8ddae0b94479647d2"
+    },
+    "astro-github-actions": {
+      "source": "jdevalk/skills",
+      "sourceType": "github",
+      "skillPath": "astro-github-actions/SKILL.md",
+      "computedHash": "e307382a24a14f927aa939fcbf48b77810754e6828c344416e31d8db41b7b0e3"
+    },
+    "astro-i18n-setup": {
+      "source": "karero/website-builder",
+      "sourceType": "github",
+      "skillPath": "skills/astro-i18n-setup/SKILL.md",
+      "computedHash": "e374592a0cb7dca602c3529ce213353bac70179bbb80958a2d59484b8d466344"
+    },
+    "astro-seo": {
+      "source": "jdevalk/skills",
+      "sourceType": "github",
+      "skillPath": "astro-seo/SKILL.md",
+      "computedHash": "fc448d43509b78c62c95e0dd9cee051a02917b050b4affe061739c160a2ba4de"
+    },
+    "best-practices": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "skillPath": "skills/best-practices/SKILL.md",
+      "computedHash": "fc34a8d4aea22d0158e0560457c82432e9d2d0ac74cf3e9aaccb599905f3f711"
+    },
+    "cloudflare": {
+      "source": "cloudflare/skills",
+      "sourceType": "github",
+      "skillPath": "skills/cloudflare/SKILL.md",
+      "computedHash": "8581f52e9f307d6ae298e016f93720bae2739d13a2169fa96d47df516c38f63c"
+    },
+    "content-collection": {
+      "source": "incluud/astro-agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/content-collection/SKILL.md",
+      "computedHash": "738539cc0032c1c414dd04934843f1e9bb55100224cf35ef003b441fd418b574"
+    },
+    "content-seo": {
+      "source": "jdevalk/skills",
+      "sourceType": "github",
+      "skillPath": "content-seo/SKILL.md",
+      "computedHash": "bf71b1dfef3b45c76a430a649256457c7887bf4ec31259ce0afe1f9d0fdf1920"
+    },
+    "copywriting": {
+      "source": "karero/website-builder",
+      "sourceType": "github",
+      "skillPath": "skills/copywriting/SKILL.md",
+      "computedHash": "c1b3495e341be1c408ed3b01dc648659881cef6d2e0495c6dbe710082977e56e"
+    },
+    "core-web-vitals": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "skillPath": "skills/core-web-vitals/SKILL.md",
+      "computedHash": "ceaa3e9c9dfa6209ffe923714c0a093b950d0922213d0cf375c27f3d602cc857"
+    },
+    "create-component": {
+      "source": "incluud/astro-agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/create-component/SKILL.md",
+      "computedHash": "c9b023760ef2189dd3af06fa6bcc184e56da08a5114e0a309e677637e30c21b6"
+    },
+    "customer-research": {
+      "source": "karero/website-builder",
+      "sourceType": "github",
+      "skillPath": "skills/customer-research/SKILL.md",
+      "computedHash": "f20a720bebb76bfabf379022b7ba026bed8ba1a797544779a321400d35dc963e"
+    },
+    "docs-lookup": {
+      "source": "incluud/astro-agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/docs-lookup/SKILL.md",
+      "computedHash": "94f2deb8dc4fcc256b7163ef6c9c8219714264e6da7c0c4f92b8849f45af5c55"
+    },
+    "double-knuth": {
+      "source": "karero/website-builder",
+      "sourceType": "github",
+      "skillPath": "skills/double-knuth/SKILL.md",
+      "computedHash": "a60228a843c6c43fec52c844fa27263433ca02c4ebb9033a679e0965713e3ae5"
+    },
+    "emdash-github-actions": {
+      "source": "jdevalk/skills",
+      "sourceType": "github",
+      "skillPath": "emdash-github-actions/SKILL.md",
+      "computedHash": "c30421e6953cfc2d61b703450064293e685c8c6d19ecdd477d5f3908405a3a7f"
+    },
+    "github-profile": {
+      "source": "jdevalk/skills",
+      "sourceType": "github",
+      "skillPath": "github-profile/SKILL.md",
+      "computedHash": "fa1ec76aa021a0272714482348e28f9684f235db5cfbd16d378eca2b69b71ce3"
+    },
+    "github-repo": {
+      "source": "jdevalk/skills",
+      "sourceType": "github",
+      "skillPath": "github-repo/SKILL.md",
+      "computedHash": "bb3de071d8fce74e4b5f1a8864177080d794d4ccff7615eeb292f52205ace3d4"
+    },
+    "image": {
+      "source": "karero/website-builder",
+      "sourceType": "github",
+      "skillPath": "skills/image/SKILL.md",
+      "computedHash": "09612662bd86084a0194c69dfa3e6473b6c9530d7971e60a235f0bb5c5340e13"
+    },
+    "independent-review": {
+      "source": "karero/website-builder",
+      "sourceType": "github",
+      "skillPath": "skills/independent-review/SKILL.md",
+      "computedHash": "18911fdfbb8ff22e8b50c5bbccccfafbe3d43c98b177caa8d2bad975f50f278b"
+    },
+    "internal-link-audit": {
+      "source": "karero/website-builder",
+      "sourceType": "github",
+      "skillPath": "skills/internal-link-audit/SKILL.md",
+      "computedHash": "4e730bf30d92618a81d910ff5750ee8c43fb699a4c5e36aa5656fc7cbfd3b1fa"
+    },
+    "keystatic-setup": {
+      "source": "karero/website-builder",
+      "sourceType": "github",
+      "skillPath": "skills/keystatic-setup/SKILL.md",
+      "computedHash": "04336a57f40594fd6c61c7679ae98bb9f2857067730cf9038f12b1fa4c3e7484"
+    },
+    "metadata-check": {
+      "source": "jdevalk/skills",
+      "sourceType": "github",
+      "skillPath": "metadata-check/SKILL.md",
+      "computedHash": "fca5dc31c5e4895698ccfc604ecb472f55258d590549b8b29c96b716517795bc"
+    },
+    "migrate": {
+      "source": "incluud/astro-agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/migrate/SKILL.md",
+      "computedHash": "53b8765c7f96c535a3bd884b0342813e675c97e4eee103e8c54c1609141d0ccb"
+    },
+    "new-website": {
+      "source": "karero/website-builder",
+      "sourceType": "github",
+      "skillPath": "skills/new-website/SKILL.md",
+      "computedHash": "2f9ee46f9ed4faac34ea32e453e86aded724a715f93fed1260fbba9a2356795a"
+    },
+    "og-images": {
+      "source": "karero/website-builder",
+      "sourceType": "github",
+      "skillPath": "skills/og-images/SKILL.md",
+      "computedHash": "d21efe429410c3a58484b2eb67da420ebc82d930c0287631ccc9b4c76a75a92f"
+    },
+    "outgoing-link-audit": {
+      "source": "karero/website-builder",
+      "sourceType": "github",
+      "skillPath": "skills/outgoing-link-audit/SKILL.md",
+      "computedHash": "108d7aba9bd70be00257f76e7ba78f0dc42f8e34eb97d2b01c08167aee126a2e"
+    },
+    "performance": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "skillPath": "skills/performance/SKILL.md",
+      "computedHash": "25074989a0bbf636fd92e9079270b262a1c63422ed72a854494a8241dea0fcc5"
+    },
+    "playwright-best-practices": {
+      "source": "currents-dev/playwright-best-practices-skill",
+      "sourceType": "github",
+      "skillPath": "playwright-best-practices/SKILL.md",
+      "computedHash": "88623575c97314e115f0e361a7d942e31d3b7a4e8925832257e1ad33f52096e4"
+    },
+    "readability-check": {
+      "source": "jdevalk/skills",
+      "sourceType": "github",
+      "skillPath": "readability-check/SKILL.md",
+      "computedHash": "78e8831c4d4b96b3af630be5020c660d7d6f2280ecc0983ebc303e634c072f03"
+    },
+    "schema-markup": {
+      "source": "karero/website-builder",
+      "sourceType": "github",
+      "skillPath": "skills/schema-markup/SKILL.md",
+      "computedHash": "1cea936532dc2cf58131fd60e99db6c4d57310fa3a72fe464dd72f786ed21f03"
+    },
+    "search-console-insights": {
+      "source": "karero/website-builder",
+      "sourceType": "github",
+      "skillPath": "skills/search-console-insights/SKILL.md",
+      "computedHash": "0a53cb7f201c033153d858f4c5cd9c9e5b2a97f01a796da36c5ababf3234335b"
+    },
+    "search-console-setup": {
+      "source": "karero/website-builder",
+      "sourceType": "github",
+      "skillPath": "skills/search-console-setup/SKILL.md",
+      "computedHash": "1fd86ba244fb929dc398927467be8c52df0567251a424b875d5058849bdfba0c"
+    },
+    "seo": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "skillPath": "skills/seo/SKILL.md",
+      "computedHash": "aa081d7ee9f44d1b09ac521051630adac2fca0e595e3d0d0ec881d0b2644676f"
+    },
+    "seo-audit": {
+      "source": "karero/website-builder",
+      "sourceType": "github",
+      "skillPath": "skills/seo-audit/SKILL.md",
+      "computedHash": "81efb501e5f81191c5bc6a6add01abc31540c4093529e2c80c3b1b36dab407ea"
+    },
+    "seo-reposition": {
+      "source": "karero/website-builder",
+      "sourceType": "github",
+      "skillPath": "skills/seo-reposition/SKILL.md",
+      "computedHash": "4d27cecf84c25bf42b479a89b7b16e18c29b6b1d46667265c051ba026e85bff0"
+    },
+    "site-architecture": {
+      "source": "karero/website-builder",
+      "sourceType": "github",
+      "skillPath": "skills/site-architecture/SKILL.md",
+      "computedHash": "6d2441e9a0380a6628fd08192cd5910e732a852e1461e766d6e1a37e95b793bb"
+    },
+    "static-seo": {
+      "source": "jdevalk/skills",
+      "sourceType": "github",
+      "skillPath": "static-seo/SKILL.md",
+      "computedHash": "40277f1a2f4fa826639f71999ef700af5dd8f957d3d2eb6108673a009840c00d"
+    },
+    "tailwind-4-docs": {
+      "source": "Lombiq/Tailwind-Agent-Skills",
+      "sourceType": "github",
+      "skillPath": "skills/tailwind-4-docs/SKILL.md",
+      "computedHash": "4900f575f24641b1af459cda37cbb8438ecf3f8f1a63148384197cb730895093"
+    },
+    "verification-before-completion": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "skillPath": "skills/verification-before-completion/SKILL.md",
+      "computedHash": "b529822bdac4b197b180fe12225cff86b930b65910435103c10622df7f041651"
+    },
+    "web-design-guidelines": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/web-design-guidelines/SKILL.md",
+      "computedHash": "f3bc47f890f42a44db1007ab390709ec368e4b8c089baee6b0007182236ac474"
+    },
+    "web-perf": {
+      "source": "cloudflare/skills",
+      "sourceType": "github",
+      "skillPath": "skills/web-perf/SKILL.md",
+      "computedHash": "a411d7a1d052e39069ad7c898d6b7e22100945a3f104794e0b76e3af480d3f44"
+    },
+    "web-quality-audit": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "skillPath": "skills/web-quality-audit/SKILL.md",
+      "computedHash": "10c0b018ce77d2c6dd17aecf1ab58a64abb2beee945354d83c4ba8883527120a"
+    },
+    "website-content-guide": {
+      "source": "karero/website-builder",
+      "sourceType": "github",
+      "skillPath": "skills/website-content-guide/SKILL.md",
+      "computedHash": "b8087a09aa9ec0a29a107d3d4a10de4be9305fa890f709d1c40f45958c49378f"
+    },
+    "website-design-system": {
+      "source": "karero/website-builder",
+      "sourceType": "github",
+      "skillPath": "skills/website-design-system/SKILL.md",
+      "computedHash": "571eb8a560210b6242cf82447d13f8c86a705f7e4fafadcb8bffb64c1bfc9e3a"
+    },
+    "website-permissions": {
+      "source": "karero/website-builder",
+      "sourceType": "github",
+      "skillPath": "skills/website-permissions/SKILL.md",
+      "computedHash": "92bec62d27f474ebc344ef6d7455bda3755def5a4c4f8bac34bae886326e5f60"
+    },
+    "website-positioning": {
+      "source": "karero/website-builder",
+      "sourceType": "github",
+      "skillPath": "skills/website-positioning/SKILL.md",
+      "computedHash": "e82043a794637e1040de05a63a64af9803295980e458402967f04005c7bce5cf"
+    },
+    "website-qa": {
+      "source": "karero/website-builder",
+      "sourceType": "github",
+      "skillPath": "skills/website-qa/SKILL.md",
+      "computedHash": "422f4d812fa17708724ebb07434649c4177d642c841db6f6c2705328e1685711"
+    },
+    "website-review": {
+      "source": "karero/website-builder",
+      "sourceType": "github",
+      "skillPath": "skills/website-review/SKILL.md",
+      "computedHash": "962aeb5966d7512b3eda6accd504f76aafae3bc312d42302d7736528d7cc73e1"
+    },
+    "website-seo-geo": {
+      "source": "karero/website-builder",
+      "sourceType": "github",
+      "skillPath": "skills/website-seo-geo/SKILL.md",
+      "computedHash": "d8cd2ae720bbedabe4bfa6098dddc7ca0387aba06435671b156c91242123db98"
+    },
+    "website-testimonials": {
+      "source": "karero/website-builder",
+      "sourceType": "github",
+      "skillPath": "skills/website-testimonials/SKILL.md",
+      "computedHash": "192361c478754b43f7a325fbc75f09bf958c1cd4586978689bc5fab785498e1a"
+    },
+    "workers-best-practices": {
+      "source": "cloudflare/skills",
+      "sourceType": "github",
+      "skillPath": "skills/workers-best-practices/SKILL.md",
+      "computedHash": "c919a93c9db826a0ee2818f6f7977c40c1a43bb87abc848b22181fdbabe2ef80"
+    },
+    "wp-github-actions": {
+      "source": "jdevalk/skills",
+      "sourceType": "github",
+      "skillPath": "wp-github-actions/SKILL.md",
+      "computedHash": "172e9f35910d780eb20438d66d237bcc6850bfd8a5c50d6a3d88beaeb6aee645"
+    },
+    "wp-readme-optimizer": {
+      "source": "jdevalk/skills",
+      "sourceType": "github",
+      "skillPath": "wp-readme-optimizer/SKILL.md",
+      "computedHash": "b61bd080e9382a48e3e2907a47983fd05506f32adfee7cc75375d014c7e6fb2f"
+    },
+    "wp-static-clone": {
+      "source": "jdevalk/skills",
+      "sourceType": "github",
+      "skillPath": "wp-static-clone/SKILL.md",
+      "computedHash": "c81dbe5c2f418f018b92a347541d3ab20ec971ac7f0f194315ed947b975a5421"
+    },
+    "wrangler": {
+      "source": "cloudflare/skills",
+      "sourceType": "github",
+      "skillPath": "skills/wrangler/SKILL.md",
+      "computedHash": "d2094f7a5a76414fc0cd365fd8ddba3258c2135a1d468b78213c0fa02c309b9b"
+    }
+  }
+}
