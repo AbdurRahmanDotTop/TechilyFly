@@ -3,12 +3,24 @@ import Button from './Button.astro';
 
 const links = [
   { label: 'Home', href: '/#' },
+  { label: 'Clients', href: '/#clients' },
   { label: 'Services', href: '/#services' },
   { label: 'Process', href: '/#process' },
   { label: 'Testimonials', href: '/#testimonials' },
-  { label: 'Clients', href: '/#clients' },
   { label: 'Case Studies', href: '/case-studies' },
   { label: 'Contact', href: '/#contact' },
+  { 
+    label: 'Our EcoSystem', 
+    dropdown: [
+      { name: "Techily Fly Institute", desc: "A modern learning platform offering industry-leading technical education.", href: "https://institute.techilyfly.com/" },
+      { name: "Techily Fly Apps", desc: "Cross-platform and native mobile applications for iOS and Android.", href: "https://apps.techilyfly.com/" },
+      { name: "Techily Fly Web", desc: "Custom web application development using cutting-edge frameworks.", href: "https://web.techilyfly.com/" },
+      { name: "Techily Fly AI", desc: "Advanced Artificial Intelligence and Machine Learning solutions.", href: "https://ai.techilyfly.com/" },
+      { name: "Techily Fly Editing", desc: "Professional video editing services for modern creators.", href: "https://editing.techilyfly.com/" },
+      { name: "Techily Fly CSC", desc: "Techily Fly CSC provides reliable Common Service Centre solutions.", href: "https://csc.techilyfly.com/" },
+      { name: "Techily Fly Marketing", desc: "Data-driven digital marketing strategies to accelerate your business.", href: "https://marketing.techilyfly.com/" }
+    ] 
+  }
 ];
 ---
 
@@ -20,23 +32,52 @@ const links = [
     </a>
 
     <!-- Desktop Nav -->
-    <nav class="hidden md:flex items-center gap-8">
-      <ul class="flex items-center gap-8">
+    <nav class="hidden lg:flex items-center gap-6">
+      <ul class="flex items-center gap-6">
         {links.map(link => (
-          <li>
-            <a href={link.href} class="text-sm font-medium text-tf-cloud hover:text-tf-coral transition-colors">
-              {link.label}
-            </a>
-          </li>
+          link.dropdown ? (
+            <li class="relative group">
+              <button class="text-sm font-medium text-tf-cloud hover:text-tf-coral transition-colors flex items-center gap-1 py-4">
+                {link.label}
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:rotate-180"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              
+              <!-- Mega Menu Dropdown -->
+              <div class="absolute top-full left-1/2 -translate-x-1/2 w-[800px] bg-[#1A1A1A]/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pointer-events-none group-hover:pointer-events-auto -mt-2 group-hover:mt-0">
+                <div class="p-6 grid grid-cols-2 gap-4">
+                  {link.dropdown.map(item => (
+                    <a href={item.href} class="block p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors border border-transparent hover:border-tf-coral/30 group/item">
+                      <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded bg-tf-coral/10 text-tf-coral flex items-center justify-center shrink-0">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                        </div>
+                        <div>
+                          <h4 class="font-bold text-white text-sm group-hover/item:text-tf-coral transition-colors">{item.name}</h4>
+                          <p class="text-xs text-tf-graphite-40 mt-1 line-clamp-2">{item.desc}</p>
+                          <span class="text-tf-coral text-xs font-semibold mt-2 flex items-center gap-1 opacity-80 group-hover/item:opacity-100">Explore <span>→</span></span>
+                        </div>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </li>
+          ) : (
+            <li>
+              <a href={link.href} class="text-sm font-medium text-tf-cloud hover:text-tf-coral transition-colors py-4 inline-block">
+                {link.label}
+              </a>
+            </li>
+          )
         ))}
       </ul>
       <Button href="/#contact" variant="primary" class="!px-5 !py-2 !text-sm">
-        Start Now →
+        Free Consultation →
       </Button>
     </nav>
 
     <!-- Mobile Menu Button -->
-    <button id="mobile-menu-btn" class="md:hidden text-white p-2" aria-label="Toggle Menu">
+    <button id="mobile-menu-btn" class="lg:hidden text-white p-2" aria-label="Toggle Menu">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <line x1="4" x2="20" y1="12" y2="12"></line>
         <line x1="4" x2="20" y1="6" y2="6"></line>
@@ -46,15 +87,31 @@ const links = [
   </div>
 
   <!-- Mobile Nav Dropdown -->
-  <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-tf-graphite/95 backdrop-blur-lg border-b border-white/10 md:hidden">
-    <div class="container mx-auto px-6 py-4 flex flex-col gap-4">
+  <div id="mobile-menu" class="hidden absolute top-full left-0 w-full max-h-[85vh] overflow-y-auto bg-tf-graphite/95 backdrop-blur-lg border-b border-white/10 lg:hidden">
+    <div class="container mx-auto px-6 py-4 flex flex-col gap-2">
       {links.map(link => (
-        <a href={link.href} class="text-base font-medium text-tf-cloud hover:text-tf-coral transition-colors py-2 border-b border-white/5 last:border-none mobile-link">
-          {link.label}
-        </a>
+        link.dropdown ? (
+          <div class="py-2 border-b border-white/5">
+            <button class="mobile-dropdown-btn w-full flex items-center justify-between text-base font-medium text-tf-cloud mb-2 pl-2 py-1 outline-none">
+              {link.label}
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 transform chevron-icon"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="mobile-dropdown-content hidden flex-col gap-1 pl-4 border-l border-white/10 ml-2">
+              {link.dropdown.map(item => (
+                <a href={item.href} class="text-sm font-medium text-tf-graphite-40 hover:text-tf-coral transition-colors py-2 mobile-link block">
+                  {item.name}
+                </a>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <a href={link.href} class="text-base font-medium text-tf-cloud hover:text-tf-coral transition-colors py-3 border-b border-white/5 last:border-none mobile-link block pl-2">
+            {link.label}
+          </a>
+        )
       ))}
-      <Button href="/#contact" variant="primary" class="w-full mt-2">
-        Start Now →
+      <Button href="/#contact" variant="primary" class="w-full mt-4">
+        Free Consultation →
       </Button>
     </div>
   </div>
@@ -76,6 +133,7 @@ const links = [
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
   const mobileLinks = document.querySelectorAll('.mobile-link');
+  const dropdownBtns = document.querySelectorAll('.mobile-dropdown-btn');
 
   btn?.addEventListener('click', () => {
     menu?.classList.toggle('hidden');
@@ -84,6 +142,17 @@ const links = [
   mobileLinks.forEach(link => {
     link.addEventListener('click', () => {
       menu?.classList.add('hidden');
+    });
+  });
+
+  dropdownBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const content = btn.nextElementSibling;
+      const icon = btn.querySelector('.chevron-icon');
+      
+      content?.classList.toggle('hidden');
+      content?.classList.toggle('flex');
+      icon?.classList.toggle('rotate-180');
     });
   });
 </script>
