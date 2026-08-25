@@ -10,6 +10,3 @@ database_id = "e1aeda64-ae8c-4d6f-bca4-be148b68edae"
 [vars]
 TURNSTILE_SECRET = "YOUR_TURNSTILE_SECRET"
 EMAIL_ALERTS_TO = "support@techilyfly.com"
-
-[[send_email]]
-name = "SEND_EMAIL"
